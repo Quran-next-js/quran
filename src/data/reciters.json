@@ -1,0 +1,163 @@
+[
+  {
+    "id": "Husary_64kbps",
+    "name": "محمود خليل الحصري - مرتل",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Husary_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Husary_Mujawwad_64kbps",
+    "name": "محمود خليل الحصري - مجود",
+    "style": "Mujawwad",
+    "server": "https://everyayah.com/data/Husary_Mujawwad_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Husary_Muallim_128kbps",
+    "name": "محمود خليل الحصري - معلم",
+    "style": "Mujawwad",
+    "server": "https://everyayah.com/data/Husary_Muallim_128kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Abdul_Basit_Murattal_64kbps",
+    "name": "عبد الباسط عبد الصمد - مرتل",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Abdul_Basit_Murattal_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Abdul_Basit_Mujawwad_128kbps",
+    "name": "عبد الباسط عبد الصمد - مجود",
+    "style": "Mujawwad",
+    "server": "https://everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Mustafa_Ismail_48kbps",
+    "name": "مصطفى إسماعيل",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Mustafa_Ismail_48kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "mahmoud_ali_al_banna_32kbps",
+    "name": "محمود علي البنا",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/mahmoud_ali_al_banna_32kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Menshawi_32kbps",
+    "name": "محمد صديق المنشاوي - مرتل",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Menshawi_32kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Minshawy_Mujawwad_64kbps",
+    "name": "محمد صديق المنشاوي- مجود",
+    "style": "Mujawwad",
+    "server": "https://everyayah.com/data/Minshawy_Mujawwad_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Hudhaify_64kbps",
+    "name": "علي بن عبد الرحمن الحذيفي",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Hudhaify_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Abdurrahmaan_As-Sudais_64kbps",
+    "name": "عبد الرحمن السديس",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Abdurrahmaan_As-Sudais_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Saood_ash-Shuraym_64kbps",
+    "name": "سعود بن إبراهيم آل شريم",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Saood_ash-Shuraym_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Muhammad_Ayyoub_64kbps",
+    "name": "محمد أيوب",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Muhammad_Ayyoub_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Abdullah_Basfar_64kbps",
+    "name": "عبد الله بن علي بصفر",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Abdullah_Basfar_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Maher_AlMuaiqly_64kbps",
+    "name": "ماهر بن حمد المعيقلي",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Maher_AlMuaiqly_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Abu_Bakr_Ash-Shaatree_64kbps",
+    "name": "أبو بكر الشاطري",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Abu_Bakr_Ash-Shaatree_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Ahmed_ibn_Ali_al-Ajamy_64kbps_QuranExplorer.Com",
+    "name": "أحمد علي العجمي",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Ahmed_ibn_Ali_al-Ajamy_64kbps_QuranExplorer.Com/",
+    "by_ayah": true
+  },
+  {
+    "id": "Alafasy_64kbps",
+    "name": "مشاري راشد العفاسي",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Alafasy_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Ghamadi_40kbps",
+    "name": "سعد بن سعيد الغامدي",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Ghamadi_40kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Fares_Abbad_64kbps",
+    "name": "فارس عباد",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Fares_Abbad_64kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Khaalid_Abdullaah_al-Qahtaanee_192kbps",
+    "name": "خالد عبدالله القحطاني",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Khaalid_Abdullaah_al-Qahtaanee_192kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Yasser_Ad-Dussary_128kbps",
+    "name": "ياسر الدوسري",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/",
+    "by_ayah": true
+  },
+  {
+    "id": "Nasser_Alqatami_128kbps",
+    "name": "ناصر القطامي",
+    "style": "Murattal",
+    "server": "https://everyayah.com/data/Nasser_Alqatami_128kbps/",
+    "by_ayah": true
+  }
+]
