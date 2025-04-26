@@ -2707,8 +2707,8 @@
   },
   {
     "page": 452,
-    "sura": "ص",
-    "sura_number": 38,
+    "sura": "الصافات",
+    "sura_number": 37,
     "juz": 23
   },
   {
@@ -2887,8 +2887,8 @@
   },
   {
     "page": 482,
-    "sura": "الشورى",
-    "sura_number": 42,
+    "sura": "فصلت",
+    "sura_number": 41,
     "juz": 25
   },
   {
@@ -3522,6 +3522,12 @@
     "juz": 30
   },
   {
+    "page": 587,
+    "sura": "المطففين",
+    "sura_number": 83,
+    "juz": 30
+  },
+  {
     "page": 588,
     "sura": "المطففين",
     "sura_number": 83,
@@ -3529,192 +3535,186 @@
   },
   {
     "page": 589,
-    "sura": "المطففين",
-    "sura_number": 83,
-    "juz": 30
-  },
-  {
-    "page": 590,
     "sura": "الانشقاق",
     "sura_number": 84,
     "juz": 30
   },
   {
-    "page": 591,
+    "page": 590,
     "sura": "البروج",
     "sura_number": 85,
     "juz": 30
   },
   {
-    "page": 592,
+    "page": 591,
     "sura": "الطارق",
     "sura_number": 86,
     "juz": 30
   },
   {
-    "page": 593,
+    "page": 591,
     "sura": "الأعلى",
     "sura_number": 87,
     "juz": 30
   },
   {
-    "page": 594,
+    "page": 592,
     "sura": "الغاشية",
     "sura_number": 88,
     "juz": 30
   },
   {
-    "page": 595,
+    "page": 593,
     "sura": "الفجر",
     "sura_number": 89,
     "juz": 30
   },
   {
-    "page": 596,
+    "page": 594,
     "sura": "البلد",
     "sura_number": 90,
     "juz": 30
   },
   {
-    "page": 597,
+    "page": 595,
     "sura": "الشمس",
     "sura_number": 91,
     "juz": 30
   },
   {
-    "page": 598,
+    "page": 595,
     "sura": "الليل",
     "sura_number": 92,
     "juz": 30
   },
   {
-    "page": 599,
+    "page": 596,
     "sura": "الضحى",
     "sura_number": 93,
     "juz": 30
   },
   {
-    "page": 600,
+    "page": 596,
     "sura": "الشرح",
     "sura_number": 94,
     "juz": 30
   },
   {
-    "page": 601,
+    "page": 597,
     "sura": "التين",
     "sura_number": 95,
     "juz": 30
   },
   {
-    "page": 602,
+    "page": 597,
     "sura": "العلق",
     "sura_number": 96,
     "juz": 30
   },
   {
-    "page": 603,
+    "page": 598,
     "sura": "القدر",
     "sura_number": 97,
     "juz": 30
   },
   {
-    "page": 604,
+    "page": 598,
     "sura": "البينة",
     "sura_number": 98,
     "juz": 30
   },
   {
-    "page": 605,
+    "page": 599,
     "sura": "الزلزلة",
     "sura_number": 99,
     "juz": 30
   },
   {
-    "page": 605,
+    "page": 599,
     "sura": "العاديات",
     "sura_number": 100,
     "juz": 30
   },
   {
-    "page": 606,
+    "page": 600,
     "sura": "القارعة",
     "sura_number": 101,
     "juz": 30
   },
   {
-    "page": 606,
+    "page": 600,
     "sura": "التكاثر",
     "sura_number": 102,
     "juz": 30
   },
   {
-    "page": 607,
+    "page": 601,
     "sura": "العصر",
     "sura_number": 103,
     "juz": 30
   },
   {
-    "page": 607,
+    "page": 601,
     "sura": "الهمزة",
     "sura_number": 104,
     "juz": 30
   },
   {
-    "page": 608,
+    "page": 601,
     "sura": "الفيل",
     "sura_number": 105,
     "juz": 30
   },
   {
-    "page": 608,
+    "page": 602,
     "sura": "قريش",
     "sura_number": 106,
     "juz": 30
   },
   {
-    "page": 609,
+    "page": 602,
     "sura": "الماعون",
     "sura_number": 107,
     "juz": 30
   },
   {
-    "page": 609,
+    "page": 602,
     "sura": "الكوثر",
     "sura_number": 108,
     "juz": 30
   },
   {
-    "page": 610,
+    "page": 603,
     "sura": "الكافرون",
     "sura_number": 109,
     "juz": 30
   },
   {
-    "page": 610,
+    "page": 603,
     "sura": "النصر",
     "sura_number": 110,
     "juz": 30
   },
   {
-    "page": 611,
+    "page": 603,
     "sura": "المسد",
     "sura_number": 111,
     "juz": 30
   },
   {
-    "page": 611,
+    "page": 604,
     "sura": "الإخلاص",
     "sura_number": 112,
     "juz": 30
   },
   {
-    "page": 612,
+    "page": 604,
     "sura": "الفلق",
     "sura_number": 113,
     "juz": 30
   },
   {
-    "page": 612,
+    "page": 604,
     "sura": "الناس",
     "sura_number": 114,
     "juz": 30
