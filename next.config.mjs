@@ -37,17 +37,19 @@ const nextConfig = {
     skipWaiting: true,
     runtimeCaching: [
       {
-        urlPattern: /^\/data\/.*\.json$/,
-        handler: "CacheFirst",
+        urlPattern: /\/quran\/.*\.json$/,
+        handler: 'CacheFirst',
         options: {
-          cacheName: "json-data",
-          expiration: {
-            maxEntries: 120,
-            maxAgeSeconds: 60 * 60 * 24 * 365,
-          },
-          cacheableResponse: {
-            statuses: [0, 200],
-          },
+          cacheName: 'quran-json',
+          expiration: { maxEntries: 60, maxAgeSeconds: 30 * 24 * 60 * 60 },
+        },
+      },
+      {
+        urlPattern: /^https:\/\/ik\.imagekit\.io\/hefz\/quran\//,
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'quran-images',
+          expiration: { maxEntries: 600, maxAgeSeconds: 30 * 24 * 60 * 60 },
         },
       },
     ],
