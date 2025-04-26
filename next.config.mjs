@@ -2,12 +2,12 @@ import withPWA from 'next-pwa';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ✅ هذا السطر يُجبر Next.js على استخدام Webpack بدل Turbopack
   experimental: {
     turbo: false,
   },
 
   images: {
+    unoptimized: true, // ⬅️ مهم
     remotePatterns: [
       {
         protocol: 'https',
