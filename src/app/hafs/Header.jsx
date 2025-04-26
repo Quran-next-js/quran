@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { isAnyOffcanvasOpen } from "@/utils/offcanvasUtils";
 
 export default function Header({ currentSura, currentJuz, currentPage, totalPages, scrollToPage }) {
@@ -25,6 +26,49 @@ export default function Header({ currentSura, currentJuz, currentPage, totalPage
       }
    };
 
+   const [inputValue, setInputValue] = useState(currentPage);
+   const [shake, setShake] = useState(false);
+
+   useEffect(() => {
+      setInputValue(currentPage);
+   }, [currentPage]);
+
+   let debounceTimer;
+   const handleChange = (e) => {
+      const value = e.target.value.replace(/\D/g, ""); // يمنع أي حروف
+      setInputValue(value);
+
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+         attemptScroll(value);
+      }, 600);
+   };
+
+   const handleKeyDown = (e) => {
+      if (e.key === "Enter") {
+         attemptScroll(inputValue);
+      }
+   };
+
+   const handleBlur = () => {
+      attemptScroll(inputValue);
+   };
+
+   const attemptScroll = (value) => {
+      const page = Number(value);
+      if (page >= 1 && page <= totalPages) {
+         scrollToPage(page);
+      } else {
+         triggerShake();
+      }
+   };
+
+   const triggerShake = () => {
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+   };
+
+
    return (
       <header className="h-16 bg-green-800 text-white flex items-center justify-between px-4 sticky top-0 z-10 shadow-md">
          <button
@@ -34,15 +78,23 @@ export default function Header({ currentSura, currentJuz, currentPage, totalPage
             {`سورة ${currentSura}` || "السورة"}
          </button>
 
-         <div>
+         <div className="relative">
             <input
-               type="number"
-               min="1"
-               max={totalPages}
-               value={currentPage}
-               onChange={(e) => scrollToPage(Number(e.target.value))}
-               className="form-control text-center"
-               style={{ width: 60 }}
+               type="text"
+               inputMode="numeric"
+               value={inputValue}
+               onChange={handleChange}
+               onFocus={(e) => e.target.select()} // ← هنا أضفنا السطر الجميل
+               onKeyDown={handleKeyDown}
+               onBlur={handleBlur}
+               className={`text-center font-bold border-2 rounded-xl w-20 py-1 px-2 focus:outline-none focus:ring-2 focus:ring-green-400 ${shake ? "animate-shake border-red-500" : "border-green-700"
+                  }`}
+               style={{
+                  fontFamily: "Cairo, 'Amiri', serif",
+                  backgroundColor: "#f9f9f9",
+                  color: "#1b4332",
+               }}
+               aria-label="رقم الصفحة"
             />
          </div>
 

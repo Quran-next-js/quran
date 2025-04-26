@@ -105,6 +105,52 @@ body {
   fill: rgba(255, 215, 0, 0.3) !important;
 }
 
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #4ade80; /* لون العلامة */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  border: 2px solid white;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #22c55e;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #4ade80;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  border: 2px solid white;
+}
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: #22c55e;
+}
+
+
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-shake {
+  animation: shake 0.5s;
+}
+
 
 @layer utilities {
   .animate-fade-in {

@@ -163,7 +163,7 @@ export default function ListenOffcanvas({
           onClick={() => setShowListen(false)}
           className="text-red-600 font-bold py-1 px-2 rounded-full hover:bg-red-600 bg-white"
         >
-         <FiXCircle size={24} />
+          <FiXCircle size={24} />
         </button>
       </div>
 
@@ -228,21 +228,27 @@ export default function ListenOffcanvas({
             ))}
           </select>
         </div>
-        <div>
+
+        <div className="mt-4">
           <label className="block mb-1">التكرار:</label>
           <input
             disabled={isPlaying}
             type="range"
             min="1"
-            max="20"
-            step="0.1"
+            max="10"
+            step="1"
             value={repeat}
             onChange={(e) => setRepeat(parseInt(e.target.value))}
-            className="w-full"
+            className="w-full appearance-none bg-green-200 h-2 rounded"
+            style={{
+              WebkitAppearance: "none",
+              appearance: "none",
+            }}
           />
-          <div className="text-center">{repeat}</div>
+          <div className="text-center text-lg font-semibold mt-2">{repeat}</div>
         </div>
-        <div>
+
+        <div className="mt-4">
           <label className="block mb-1">السرعة:</label>
           <input
             disabled={isPlaying}
@@ -252,13 +258,18 @@ export default function ListenOffcanvas({
             step="0.1"
             value={speed}
             onChange={(e) => setSpeed(parseFloat(e.target.value))}
-            className="w-full"
+            className="w-full appearance-none bg-blue-200 h-2 rounded"
+            style={{
+              WebkitAppearance: "none",
+              appearance: "none",
+            }}
           />
-          <div className="text-center">{speed}x</div>
+          <div className="text-center text-lg font-semibold mt-2">{speed}x</div>
         </div>
+
       </div>
 
-      <div className="mt-4 flex justify-center">
+      <div className="mt-4 mb-3 flex justify-center">
         {!isPlaying ? (
           <button
             onClick={handlePlay}
