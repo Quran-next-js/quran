@@ -99,7 +99,7 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
       case "readings":
         return <ReadingTab selectedVerse={selectedVerse} />;
       case "similar":
-        return <SimilaritiesTab selectedVerse={selectedVerse}  />;
+        return <SimilaritiesTab selectedVerse={selectedVerse} />;
       default:
         return <p className="text-dark">المحتوى غير متاح حاليًا.</p>;
 
@@ -112,14 +112,14 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
       style={{ visibility: selectedVerse ? "visible" : "hidden", height: "85%" }}
     >
       <div className="offcanvas-header bg-green-600 text-white">
-        <h5 className="offcanvas-title text-white text-lg"> سورة  <span className="text-black ms-2"> [ {selectedVerse?.chapter_name} ]</span>  آيه رقم  <span className="text-black ms-2"> [ {selectedVerse?.verse_number} ] </span>   </h5>
+        <h5 className="offcanvas-title text-white text-lg">   <span className="text-black ms-2"> [ {selectedVerse?.chapter_name} ]</span>  آيه رقم  <span className="text-black ms-2"> [ {selectedVerse?.verse_number} ] </span>   صفحة : <span className="text-black ms-2"> {selectedVerse?.page_number} </span></h5>
         <button
           type="button"
           className="btn-close text-reset bg-white"
           onClick={() => setSelectedVerse(null)}
         ></button>
       </div>
-      <h4 className="text-center py-3 ayah">
+      <h4 className="text-center py-4 ayah">
         <span className="qous"> ﴿ </span>
         {
           selectedVerse?.text_uthmani?.split(" ").length > 5
@@ -128,23 +128,24 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
         }
         <span className="qous"> ﴾ </span>
       </h4>
-      {/* tabs */}
-      <div className={`flex overflow-x-auto no-scrollbar gap-3 px-2 ${activeTab === "reflection" ? "py-4" : "py-2"} border-b border-sky-800 bg-rose-950`}>
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            ref={(el) => (tabRefs.current[tab.key] = el)}
-            className={`flex-none flex flex-col items-center justify-center text-sm min-w-[50px] px-1 py-2 transition duration-200 ${activeTab === tab.key
-              ? "text-yellow-400 font-semibold"
-              : "text-white hover:text-yellow-300"
-              }`}
-            onClick={() => setActiveTab(tab.key)}
-          >
-            <div className="text-lg">{tab.icon}</div>
-            <span>{tab.label}</span>
-          </button>
-        ))}
+      <div className=" bg-green-100 text-dark d-flex justify-content-around p-1 text-sm">
+        <button
+          className={`btn btn-sm ${currentIndex === 0 ? 'btn-warning' : 'btn-primary'}`}
+          onClick={goToPrevious}
+        >
+          {currentIndex === 0 ? "الصفحة السابقة" : "الآية السابقة"}
+        </button>
+        <div className="text-center">
+          <p className="mb-0">{currentIndex + 1} / {samePageVerses.length}   </p>
+        </div>
+        <button
+          className={`btn btn-sm ${currentIndex === samePageVerses.length - 1 ? 'btn-warning' : 'btn-primary'}`}
+          onClick={goToNext}
+        >
+          {currentIndex === samePageVerses.length - 1 ? "الصفحة التالية" : "الآية التالية"}
+        </button>
       </div>
+      {/* tabs */}
       <div className="offcanvas-body text-center fs-4">
         <AnimatePresence mode="wait">
           <motion.div
@@ -158,26 +159,27 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
           </motion.div>
         </AnimatePresence>
       </div>
-
-      <div className="offcanvas-footer bg-green-600 text-white d-flex justify-content-around p-1 text-sm">
-        <button
-          className={`btn btn-sm ${currentIndex === 0 ? 'btn-warning' : 'btn-primary'}`}
-          onClick={goToPrevious}
-        >
-          {currentIndex === 0 ? "الصفحة السابقة" : "الآية السابقة"}
-        </button>
-
-        <div className="text-center">
-          <p className="text-white mb-0">{currentIndex + 1} / {samePageVerses.length}</p>
-          <p className="text-white mb-0">صفحة {selectedVerse?.page_number}</p>
-        </div>
-
-        <button
-          className={`btn btn-sm ${currentIndex === samePageVerses.length - 1 ? 'btn-warning' : 'btn-primary'}`}
-          onClick={goToNext}
-        >
-          {currentIndex === samePageVerses.length - 1 ? "الصفحة التالية" : "الآية التالية"}
-        </button>
+      {/* Bottom Navigation Bar */}
+      <div className="fixed bottom-0 left-0 right-0 bg-rose-950/80 backdrop-blur-md flex overflow-x-auto no-scrollbar border-t border-sky-800 z-10">
+        {tabs.map((tab) => (
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            key={tab.key}
+            ref={(el) => (tabRefs.current[tab.key] = el)}
+            className={`flex flex-col items-center justify-center flex-1 min-w-[80px] py-2 transition duration-200
+        ${activeTab === tab.key
+                ? "text-yellow-400 font-bold"
+                : "text-white hover:text-yellow-300"
+              }`}
+            onClick={() => setActiveTab(tab.key)}
+          >
+            <div className="text-xl">{tab.icon}</div>
+            <span className="text-[11px] mt-1">{tab.label}</span>
+            {activeTab === tab.key && (
+              <div className="mt-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
+            )}
+          </motion.button>
+        ))}
       </div>
     </div>
   );

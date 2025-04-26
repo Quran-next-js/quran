@@ -29,6 +29,7 @@ body {
 .ayah {
   font-family: "Hafs", sans-serif;
   line-height: 2;
+  font-size: 25px;
 }
 .qous {
   direction: rtl;
@@ -38,7 +39,9 @@ body {
   font-weight: 600;
   color: #417389;
 }
-
+.offcanvas-header{
+  padding: 0.5rem;
+}
 .offcanvas-header .btn-close {
   margin-right: auto;
   margin-left: 0;
