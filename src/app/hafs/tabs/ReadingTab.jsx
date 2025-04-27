@@ -34,7 +34,7 @@ export default function ReadingTab({ selectedVerse }) {
   }
 
   return (
-    <div className="text-white text-end px-0 space-y-0">
+    <div className="text-black text-end px-0 space-y-0">
       {reading.sound_link && (
         <div className="border border-sky-700 p-4 rounded-lg bg-sky-900/5">
           <H5AudioPlayer

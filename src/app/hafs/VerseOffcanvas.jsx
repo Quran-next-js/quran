@@ -112,7 +112,7 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
       style={{ visibility: selectedVerse ? "visible" : "hidden", height: "85%" }}
     >
       <div className="offcanvas-header bg-green-600 text-white">
-        <h5 className="offcanvas-title text-white text-lg">   <span className="text-black ms-2"> [ {selectedVerse?.chapter_name} ]</span>  آيه رقم  <span className="text-black ms-2"> [ {selectedVerse?.verse_number} ] </span>   صفحة : <span className="text-black ms-2"> {selectedVerse?.page_number} </span></h5>
+        <h5 className="offcanvas-title text-white text-lg">   <span className="text-gray-950 ms-2"> [ {selectedVerse?.chapter_name} ]</span>    صفحة : <span className="text-gray-950 ms-2"> [ {selectedVerse?.page_number} ] </span>  آيه :  <span className="text-gray-950 ms-2"> [ {selectedVerse?.verse_number} ] </span></h5>
         <button
           type="button"
           className="btn-close text-reset bg-white"
@@ -160,7 +160,7 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
         </AnimatePresence>
       </div>
       {/* Bottom Navigation Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-rose-950/80 backdrop-blur-md flex overflow-x-auto no-scrollbar border-t border-sky-800 z-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-gray-950/80 backdrop-blur-md flex overflow-x-auto no-scrollbar border-t border-sky-800 z-10">
         {tabs.map((tab) => (
           <motion.button
             whileTap={{ scale: 0.9 }}
