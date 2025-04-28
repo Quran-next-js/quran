@@ -16,14 +16,14 @@ const SimilaritiesTab = dynamic(() => import('./tabs/SimilaritiesTab'), { ssr: f
 
 
 const tabs = [
-  { key: "meanings", label: "معاني", icon: '/images/logo/verse_icon/meaning.png' },
-  { key: "tafseer", label: "تفسير", icon: '/images/logo/verse_icon/tfseer.png' },
-  { key: "reasons", label: "أسباب النزول", icon: '/images/logo/verse_icon/nzool.png' },
-  { key: "reflection", label: "تدبر", icon: '/images/logo/verse_icon/reflection.png' },
-  { key: "relation", label: "الربط والتناسب", icon: '/images/logo/verse_icon/tnasob.png' },
-  { key: "grammar", label: "الإعراب", icon: '/images/logo/verse_icon/grammer.png' },
-  { key: "readings", label: "القراءات", icon: '/images/logo/verse_icon/reading.png' },
-  { key: "similar", label: "متشابهات", icon: '/images/logo/verse_icon/smilise.png' },
+  { key: "meanings", label: "معاني", icon: '/images/logo/verse_icon/meaning.webp' },
+  { key: "tafseer", label: "تفسير", icon: '/images/logo/verse_icon/tfseer.webp' },
+  { key: "reasons", label: "أسباب النزول", icon: '/images/logo/verse_icon/nzool.webp' },
+  { key: "reflection", label: "تدبر", icon: '/images/logo/verse_icon/reflection.webp' },
+  { key: "relation", label: "الربط والتناسب", icon: '/images/logo/verse_icon/tnasob.webp' },
+  { key: "grammar", label: "الإعراب", icon: '/images/logo/verse_icon/grammer.webp' },
+  { key: "readings", label: "القراءات", icon: '/images/logo/verse_icon/reading.webp' },
+  { key: "similar", label: "متشابهات", icon: '/images/logo/verse_icon/smilise.webp' },
 ];
 
 export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scrollToPage, versesData }) {
