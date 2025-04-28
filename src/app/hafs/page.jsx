@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import dynamic from 'next/dynamic';
 import pageData from "@/data/page_info.json"; // بيانات السور والأجزاء
 import versesJson from "@/data/verses.json"; // بيانات الآيات وإحداثياتها
+
+import SEOUpdater from "./SEOUpdater";
 import Header from "./Header";
 import Footer from "./Footer";
 import PageViewer from "./PageViewer"; //  استدعاء مكون عرض الصفحات 
@@ -91,7 +93,7 @@ export default function HafsPage() {
       behavior: "smooth",
     });
     if (userInteracted && flipAudioRef.current) {
-      flipAudioRef.current.play().catch(() => {});
+      flipAudioRef.current.play().catch(() => { });
     }
   };
 
@@ -133,57 +135,62 @@ export default function HafsPage() {
   };
 
   return (
-    <div className="h-[100dvh] w-screen overflow-hidden flex flex-col" dir="rtl">
-      {/* الهيدر */}
-      <div className="flex-none h-16 md:h-20">
-        <Header
-          currentSura={currentSura}
-          currentJuz={currentJuz}
-          currentPage={currentPage}
+    <>
+      <SEOUpdater currentPage={currentPage} />
+      
+      <div className="h-[100dvh] w-screen overflow-hidden flex flex-col" dir="rtl">
+        {/* الهيدر */}
+        <div className="flex-none h-16 md:h-20">
+          <Header
+            currentSura={currentSura}
+            currentJuz={currentJuz}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            scrollToPage={scrollToPage}
+          />
+        </div>
+
+        {/* عارض الصفحات */}
+        <PageViewer
           totalPages={totalPages}
+          currentPage={currentPage}
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
+          scrollContainerRef={scrollContainerRef}
+          handleScroll={handleScroll}
+          versesByPage={versesByPage}
+          highlightedVerseId={highlightedVerseId}
+          setSelectedVerse={setSelectedVerse}
+          setHighlightedVerseId={setHighlightedVerseId}
+        />
+
+        {/* الفوتر */}
+        <div className="flex-none h-12 md:h-16">
+          <Footer currentPageRange={currentPageRange} highlightVerse={highlightVerse} />
+        </div>
+
+        {/* النوافذ الجانبية */}
+        <SuraOffcanvas
+          suraNames={suraNames}
+          suraMap={suraMap}
           scrollToPage={scrollToPage}
         />
+        <JuzOffcanvas
+          juzNumbers={juzNumbers}
+          juzMap={juzMap}
+          scrollToPage={scrollToPage}
+        />
+        <VerseOffcanvas
+          selectedVerse={selectedVerse}
+          setSelectedVerse={(verse) => {
+            setSelectedVerse(verse);
+            setHighlightedVerseId(verse?.id ?? null);
+          }}
+          scrollToPage={scrollToPage}
+          versesData={versesJson}
+        />
       </div>
+    </>
 
-      {/* عارض الصفحات */}
-      <PageViewer
-        totalPages={totalPages}
-        currentPage={currentPage}
-        imageWidth={imageWidth}
-        imageHeight={imageHeight}
-        scrollContainerRef={scrollContainerRef}
-        handleScroll={handleScroll}
-        versesByPage={versesByPage}
-        highlightedVerseId={highlightedVerseId}
-        setSelectedVerse={setSelectedVerse}
-        setHighlightedVerseId={setHighlightedVerseId}
-      />
-
-      {/* الفوتر */}
-      <div className="flex-none h-12 md:h-16">
-        <Footer currentPageRange={currentPageRange} highlightVerse={highlightVerse} />
-      </div>
-
-      {/* النوافذ الجانبية */}
-      <SuraOffcanvas
-        suraNames={suraNames}
-        suraMap={suraMap}
-        scrollToPage={scrollToPage}
-      />
-      <JuzOffcanvas
-        juzNumbers={juzNumbers}
-        juzMap={juzMap}
-        scrollToPage={scrollToPage}
-      />
-      <VerseOffcanvas
-        selectedVerse={selectedVerse}
-        setSelectedVerse={(verse) => {
-          setSelectedVerse(verse);
-          setHighlightedVerseId(verse?.id ?? null);
-        }}
-        scrollToPage={scrollToPage}
-        versesData={versesJson}
-      />
-    </div>
   );
 }
