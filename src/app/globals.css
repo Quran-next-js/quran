@@ -154,6 +154,37 @@ input[type="range"]::-moz-range-thumb:hover {
   animation: shake 0.5s;
 }
 
+.section-title h2 {
+  font-weight: 700;
+  padding-bottom: 20px;
+  position: relative;
+  color: #0e8407;
+}
+.section-title h2:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 160px;
+  height: 1px;
+  background: #dddddd94;
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  margin: auto;
+}
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #0cac05;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
 
 @layer utilities {
   .animate-fade-in {

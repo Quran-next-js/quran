@@ -62,73 +62,85 @@ export default function Home() {
           <Image
             src="/images/logo/home.webp"
             alt="مصحف الحفظ الميسر"
-            width={1920}
-            height={600}
-            className="w-full h-auto max-h-[150px] object-cover shadow-md"
+            width={1200}
+            height={300}
+            className="w-full h-auto max-h-[250px] object-cover shadow-md"
             priority
           />
         </section>
 
         <section className="p-3 md:p-12 animate-fade-in-up">
-          <div className="container">
+          <div className="container section-title mb-3">
+            <h2 className="text-center">  عن مصحف الحفظ الميسر </h2>
+          </div>
+          <div className="container mb-3">
             <div className="row">
               <div className="col-12">
-                <h2 className="text-2xl font-bold text-danger mb-2 text-center p-2 bg-green-200 rounded">   مصحف الحفظ الميسر </h2>
                 <p className="text-2xl text-gray-700 leading-tight text-justify mb-3">
                   هو طريقة مبتكرة لتيسير حفظ القرآن الكريم باستخدام الروابط اللفظية والمعنوية والموضوعية – ويهدف إلى تيسير الحفظ والتدبر والعمل بالقرآن الكريم.
                 </p>
               </div>
             </div>
           </div>
-          <div className="container">
-            <h3 className="text-2xl font-semibold text-danger mb-2 text-center p-2 bg-green-200 rounded"> روابط الوصول للمصحف:</h3>
+      </section>
+
+      <section className="p-3 md:p-12 animate-fade-in-up shadow-md shadow-xl/30">
+          <div className="container section-title mb-3">
+            <h2 className="text-center">  روابط الوصول للمصحف </h2>
+          </div>
+          <div className="container mb-3">
             <div className="row">
               <div className="col-md-4 col-12">
                 <Link
                   href="/hafs"
                   className="btn btn-success btn-lg w-full mb-3"
                 >
-                  مصحف الحفظ الميسر برواية حفص
+                  المصحف برواية حفص
                 </Link>
               </div>
               <div className="col-md-4 col-12">
                 <button
                   className="btn btn-secondary btn-lg w-full mb-3 cursor-not-allowed"
                 >
-                  رواية ورش (قريبًا)
+                  المصحف برواية ورش (قريبًا)
                 </button>
               </div>
               <div className="col-md-4 col-12">
                 <button
                   className="btn btn-secondary btn-lg w-full mb-3 cursor-not-allowed"
                 >
-                  رواية قالون (قريبًا)
+                  المصحف برواية قالون (قريبًا)
                 </button>
               </div>
             </div>
           </div>
+      </section>
 
+      <section className="p-3 md:p-12 animate-fade-in-up">
+
+          <div className="container section-title mb-3">
+            <h2 className="text-center">  مميزات النسخة الإلكترونية </h2>
+          </div>
           <div className="container">
-            <h3 className="text-2xl font-semibold text-danger mb-2 text-center p-2 bg-green-200 rounded">مميزات النسخة الإلكترونية:</h3>
             <div className="row">
               <div className="col-md-6 col-12">
                 <ul className="list-disc p-0 text-lg text-gray-700">
-                  <li>عرض صفحات المصحف بدقة عالية وسلاسة.</li>
-                  <li>إمكانية تصفح  كل آية بشكل منفصل.</li>
-                  <li>واجهة سريعة وفعالة حتى بدون اتصال بالإنترنت (PWA).</li>
-                  <li> يوفر المصحف  أكثر من 60 ألف وقفة تدبرية </li>
-                  <li> خاصية معرفة مناسبة كل آيه بما قبلها  ( الربط والتناسب ) </li>
-                  <li> عرض تفسير كل آية كريمة ( التفسير الميسر ) </li>
+                  <li className="text-1xl leading-9 text-justify">عرض صفحات المصحف بدقة عالية وسلاسة.</li>
+                  <li className="text-1xl leading-9 text-justify">إمكانية تصفح  كل آية بشكل منفصل.</li>
+                  <li className="text-1xl leading-9 text-justify">واجهة سريعة وفعالة حتى بدون اتصال بالإنترنت (PWA).</li>
+                  <li className="text-1xl leading-9 text-justify"> يوفر المصحف  أكثر من 60 ألف وقفة تدبرية </li>
+                  <li className="text-1xl leading-9 text-justify"> خاصية معرفة مناسبة كل آيه بما قبلها  ( الربط والتناسب ) </li>
+                  <li className="text-1xl leading-9 text-justify"> عرض تفسير كل آية كريمة ( التفسير الميسر ) </li>
                 </ul>
               </div>
               <div className="col-md-6 col-12">
                 <ul className="list-disc p-0 text-lg text-gray-700">
-                  <li> إمكانية وضع علامة مرجعية للصفحة للرجوع لها عند الحاجة . </li>
-                  <li> إمكانية الاستماع للآيات باختيار نطاق معين و اختيار قارئ و التكرار والسرعة .. الخ . </li>
-                  <li> معاني آيات الآيات الكريمة من أكثر من مصدر </li>
-                  <li> خاصية الحصول على سبب نزول كل ايه من أكثر من مصدر </li>
-                  <li> يوفر المصحف خاصية معرفة القراءات العشر لكل آية </li>
-                  <li> خاصية التعرف على متشابهات كل آيه  </li>
+                  <li className="text-1xl leading-9 text-justify"> إمكانية وضع علامة مرجعية للصفحة للرجوع لها عند الحاجة . </li>
+                  <li className="text-1xl leading-9 text-justify"> إمكانية الاستماع للآيات باختيار نطاق معين و اختيار قارئ و التكرار والسرعة .. الخ . </li>
+                  <li className="text-1xl leading-9 text-justify"> معاني آيات الآيات الكريمة من أكثر من مصدر </li>
+                  <li className="text-1xl leading-9 text-justify"> خاصية الحصول على سبب نزول كل ايه من أكثر من مصدر </li>
+                  <li className="text-1xl leading-9 text-justify"> يوفر المصحف خاصية معرفة القراءات العشر لكل آية </li>
+                  <li className="text-1xl leading-9 text-justify"> خاصية التعرف على متشابهات كل آيه  </li>
                 </ul>
               </div>
             </div>
@@ -139,12 +151,12 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="h-12 md:h-16 bg-green-800 text-white flex items-center justify-around px-4 text-sm md:text-base">
-        <p>مصحف الحفظ الميسر &copy; 2025</p>
-        <p>
-          بواسطة:
+      <footer className="h-10 md:h-10 bg-green-800 text-white flex items-center justify-around p-2 text-sm md:text-base">
+        <p className="m-0">مصحف الحفظ الميسر &copy; 2025</p>
+        <p className="m-0">
+          BY:
           <Link href="https://alaaamer.net" target="_blank">
-            <span className="font-bold text-white"> Alaa Amer </span>
+            <span className="text-white"> Alaa Amer </span>
           </Link>
         </p>
       </footer>
