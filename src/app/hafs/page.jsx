@@ -46,10 +46,8 @@ export default function HafsPage() {
       document.removeEventListener("pointerdown", handleFirstInteraction);
       document.removeEventListener("keydown", handleFirstInteraction);
     };
-
     document.addEventListener("pointerdown", handleFirstInteraction);
     document.addEventListener("keydown", handleFirstInteraction);
-
     return () => {
       document.removeEventListener("pointerdown", handleFirstInteraction);
       document.removeEventListener("keydown", handleFirstInteraction);
@@ -78,13 +76,11 @@ export default function HafsPage() {
     const pageWidth = container.clientWidth;
     const newPage = Math.round(scrollLeft / pageWidth) + 1;
     setCurrentPage(newPage);
-
     const info = pageData.find((p) => p.page === newPage);
     if (info) {
       setCurrentSura(info.sura);
       setCurrentJuz(info.juz);
     }
-
     localStorage.setItem("lastVisitedPage", newPage);
   };
 
@@ -97,7 +93,7 @@ export default function HafsPage() {
       behavior: "smooth",
     });
     if (userInteracted && flipAudioRef.current) {
-      flipAudioRef.current.play().catch(() => {});
+      flipAudioRef.current.play().catch(() => { });
     }
   };
 
@@ -211,7 +207,9 @@ export default function HafsPage() {
                   const isSelected = verse.id === highlightedVerseId;
 
                   return (
-                    <g key={verse.id}>
+                    <g key={verse.id}
+                      id={`ayah-${verse.chapter_id}-${verse.verse_number}`} // ✅ إضافة id هنا للتظليل والاسكرول
+                    >
                       <polygon
                         points={points.join(" ")}
                         fill={isSelected ? "rgba(0, 123, 255, 0.2)" : "transparent"}

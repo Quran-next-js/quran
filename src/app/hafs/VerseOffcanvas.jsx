@@ -3,16 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from "framer-motion";
-import { FaBookOpen, FaLightbulb, FaQuestionCircle, FaBrain, FaLink, FaFileAlt, FaVolumeUp, FaClone } from "react-icons/fa";
-// import versesData from "@/data/verses.json";
-// import MeaningsTab from "./tabs/MeaningsTab";
-// import TafseerTab from "./tabs/TafseerTab";
-// import NzoolTab from "./tabs/NzoolTab";
-// import ReflectionTab from "./tabs/ReflectionTab";
-// import TnasobTab from "./tabs/TnasobTab";
-// import GrammarTab from "./tabs/GrammarTab";
-// import ReadingTab from "./tabs/ReadingTab";
-// import SimilaritiesTab from "./tabs/SimilaritiesTab";
+import Image from "next/image";
+
 const MeaningsTab = dynamic(() => import('./tabs/MeaningsTab'), { ssr: false });
 const TafseerTab = dynamic(() => import('./tabs/TafseerTab'), { ssr: false });
 const NzoolTab = dynamic(() => import('./tabs/NzoolTab'), { ssr: false });
@@ -24,14 +16,14 @@ const SimilaritiesTab = dynamic(() => import('./tabs/SimilaritiesTab'), { ssr: f
 
 
 const tabs = [
-  { key: "meanings", label: "معاني", icon: <FaLightbulb /> },
-  { key: "tafseer", label: "تفسير", icon: <FaBookOpen /> },
-  { key: "reasons", label: "أسباب النزول", icon: <FaQuestionCircle /> },
-  { key: "reflection", label: "تدبر", icon: <FaBrain /> },
-  { key: "relation", label: "الربط والتناسب", icon: <FaLink /> },
-  { key: "grammar", label: "الإعراب", icon: <FaFileAlt /> },
-  { key: "readings", label: "القراءات", icon: <FaVolumeUp /> },
-  { key: "similar", label: "متشابهات", icon: <FaClone /> },
+  { key: "meanings", label: "معاني", icon: '/images/logo/verse_icon/meaning.png' },
+  { key: "tafseer", label: "تفسير", icon: '/images/logo/verse_icon/tfseer.png' },
+  { key: "reasons", label: "أسباب النزول", icon: '/images/logo/verse_icon/nzool.png' },
+  { key: "reflection", label: "تدبر", icon: '/images/logo/verse_icon/reflection.png' },
+  { key: "relation", label: "الربط والتناسب", icon: '/images/logo/verse_icon/tnasob.png' },
+  { key: "grammar", label: "الإعراب", icon: '/images/logo/verse_icon/grammer.png' },
+  { key: "readings", label: "القراءات", icon: '/images/logo/verse_icon/reading.png' },
+  { key: "similar", label: "متشابهات", icon: '/images/logo/verse_icon/smilise.png' },
 ];
 
 export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scrollToPage, versesData }) {
@@ -182,7 +174,15 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
               }`}
             onClick={() => setActiveTab(tab.key)}
           >
-            <div className="text-xl">{tab.icon}</div>
+            <div className="text-xl">
+              <Image
+                src={tab.icon} 
+                alt={`${tab.label} icon`} 
+                width={24}
+                height={24} 
+                loading= "lazy"
+              />
+            </div>
             <span className="text-[11px] mt-1">{tab.label}</span>
             {activeTab === tab.key && (
               <div className="mt-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
