@@ -18,6 +18,7 @@ export default function Footer({ currentPageRange, highlightVerse }) {
             <Image
               src="/images/logo/gear.webp"
               alt="اعدادت الحفظ الميسر"
+              title="اعدادت الحفظ الميسر"
               width={30}
               height={30}
               className="w-full h-full z-0"
@@ -29,6 +30,7 @@ export default function Footer({ currentPageRange, highlightVerse }) {
           <Image
               src="/images/logo/volume.webp"
               alt="استماع الحفظ الميسر"
+              title="استماع الحفظ الميسر"
               width="30"
               height="30"
               className="w-full h-full z-0"
@@ -40,6 +42,7 @@ export default function Footer({ currentPageRange, highlightVerse }) {
           <Image
               src="/images/logo/bookmark.webp"
               alt="حفظ الصفحة الحفظ الميسر"
+              title="حفظ الصفحة الحفظ الميسر"
               width="30"
               height="30"
               className="w-full h-full z-0"

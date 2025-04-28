@@ -47,6 +47,7 @@ export default function PageViewer({
               src={`https://ik.imagekit.io/hefz/quran/${page}.webp`}
               id={`page-${page}`}
               alt={`صفحة ${page}`}
+              title={`الحفظ الميسر صفحة ${page}`}
               width={imageWidth}
               height={imageHeight}
               className="absolute top-0 left-0 w-full h-full object-contain z-0"

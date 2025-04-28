@@ -177,7 +177,8 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
             <div className="text-xl">
               <Image
                 src={tab.icon} 
-                alt={`${tab.label} icon`} 
+                alt={`${tab.label} `} 
+                title={`${tab.label} `} 
                 width={30}
                 height={30} 
                 loading= "lazy"
