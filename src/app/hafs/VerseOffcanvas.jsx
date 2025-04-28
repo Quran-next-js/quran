@@ -1,17 +1,26 @@
 // hafs/VerseOffcanvas.jsx
 "use client";
 import { useEffect, useRef, useState } from "react";
+import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBookOpen, FaLightbulb, FaQuestionCircle, FaBrain, FaLink, FaFileAlt, FaVolumeUp, FaClone } from "react-icons/fa";
-import versesData from "@/data/verses.json";
-import MeaningsTab from "./tabs/MeaningsTab";
-import TafseerTab from "./tabs/TafseerTab";
-import NzoolTab from "./tabs/NzoolTab";
-import ReflectionTab from "./tabs/ReflectionTab";
-import TnasobTab from "./tabs/TnasobTab";
-import GrammarTab from "./tabs/GrammarTab";
-import ReadingTab from "./tabs/ReadingTab";
-import SimilaritiesTab from "./tabs/SimilaritiesTab";
+// import versesData from "@/data/verses.json";
+// import MeaningsTab from "./tabs/MeaningsTab";
+// import TafseerTab from "./tabs/TafseerTab";
+// import NzoolTab from "./tabs/NzoolTab";
+// import ReflectionTab from "./tabs/ReflectionTab";
+// import TnasobTab from "./tabs/TnasobTab";
+// import GrammarTab from "./tabs/GrammarTab";
+// import ReadingTab from "./tabs/ReadingTab";
+// import SimilaritiesTab from "./tabs/SimilaritiesTab";
+const MeaningsTab = dynamic(() => import('./tabs/MeaningsTab'), { ssr: false });
+const TafseerTab = dynamic(() => import('./tabs/TafseerTab'), { ssr: false });
+const NzoolTab = dynamic(() => import('./tabs/NzoolTab'), { ssr: false });
+const ReflectionTab = dynamic(() => import('./tabs/ReflectionTab'), { ssr: false });
+const TnasobTab = dynamic(() => import('./tabs/TnasobTab'), { ssr: false });
+const GrammarTab = dynamic(() => import('./tabs/GrammarTab'), { ssr: false });
+const ReadingTab = dynamic(() => import('./tabs/ReadingTab'), { ssr: false });
+const SimilaritiesTab = dynamic(() => import('./tabs/SimilaritiesTab'), { ssr: false });
 
 
 const tabs = [
@@ -25,7 +34,7 @@ const tabs = [
   { key: "similar", label: "متشابهات", icon: <FaClone /> },
 ];
 
-export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scrollToPage }) {
+export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scrollToPage, versesData }) {
 
 
   useEffect(() => {

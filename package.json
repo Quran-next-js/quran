@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-virtual": "^3.13.6",
     "bootstrap": "^5.3.5",
     "framer-motion": "^12.7.4",
     "image-map-resizer": "^1.0.10",

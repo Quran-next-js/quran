@@ -1,35 +1,67 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+// استدعاء الحزم
+import { useEffect, useRef, useState, useMemo } from "react";
+import dynamic from 'next/dynamic';
 import Image from "next/image";
-import pageData from "@/data/page_info.json";
-import versesJson from "@/data/verses.json";
-import SuraOffcanvas from "./SuraOffcanvas";
-import JuzOffcanvas from "./JuzOffcanvas";
-import VerseOffcanvas from "./VerseOffcanvas";
+import pageData from "@/data/page_info.json"; // بيانات السور والأجزاء
+import versesJson from "@/data/verses.json"; // بيانات الآيات وإحداثياتها
 import Header from "./Header";
 import Footer from "./Footer";
 
+// استدعاء المكونات بطريقة dynamic لتقليل حجم الباندل
+// const Header = dynamic(() => import('./Header'), { ssr: false, loading: () => <div className="h-16 md:h-20 bg-gray-200 animate-pulse" /> });
+// const Footer = dynamic(() => import('./Footer'), { ssr: false, loading: () => <div className="h-12 md:h-16 bg-gray-200 animate-pulse" /> });
+const SuraOffcanvas = dynamic(() => import('./SuraOffcanvas'), { ssr: false });
+const JuzOffcanvas = dynamic(() => import('./JuzOffcanvas'), { ssr: false });
+const VerseOffcanvas = dynamic(() => import('./VerseOffcanvas'), { ssr: false });
+
 export default function HafsPage() {
-  const totalPages = 604; // عدد صفحات المصحف
-  const scrollContainerRef = useRef(null); // مرجع لمربع السكرول الأفقي
-  const [currentPage, setCurrentPage] = useState(1); // الصفحة الحالية
-  const [currentSura, setCurrentSura] = useState(""); // اسم السورة الحالية
-  const [currentJuz, setCurrentJuz] = useState(1); // رقم الجزء الحالي
-  const [selectedVerse, setSelectedVerse] = useState(null); // الآية المحددة
-  const [highlightedVerseId, setHighlightedVerseId] = useState(null); // ID الآية المظللة
-  const [userInteracted, setUserInteracted] = useState(false); // هل المستخدم تفاعل مع الصفحة؟
+  // المتغيرات والحالات
+  const totalPages = 604;
+  const imageWidth = 1446;
+  const imageHeight = 2297;
+  const scrollContainerRef = useRef(null);
 
-  const imageWidth = 1446; // عرض صورة الصفحة
-  const imageHeight = 2297; // ارتفاع صورة الصفحة
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentSura, setCurrentSura] = useState("");
+  const [currentJuz, setCurrentJuz] = useState(1);
+  const [selectedVerse, setSelectedVerse] = useState(null);
+  const [highlightedVerseId, setHighlightedVerseId] = useState(null);
+  const [userInteracted, setUserInteracted] = useState(false);
 
+  const flipAudioRef = useRef(null); // مرجع لصوت التقليب
+
+  // تحميل مكتبة Bootstrap JS عند أول تحميل
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap.bundle.min.js").catch((err) =>
       console.error("فشل تحميل Bootstrap:", err)
     );
   }, []);
 
-  // إنشاء خريطة لربط السور والأجزاء بالصفحات
+  // تفعيل أول تفاعل مع الصفحة بطريقة مبسطة
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      setUserInteracted(true);
+      document.removeEventListener("pointerdown", handleFirstInteraction);
+      document.removeEventListener("keydown", handleFirstInteraction);
+    };
+
+    document.addEventListener("pointerdown", handleFirstInteraction);
+    document.addEventListener("keydown", handleFirstInteraction);
+
+    return () => {
+      document.removeEventListener("pointerdown", handleFirstInteraction);
+      document.removeEventListener("keydown", handleFirstInteraction);
+    };
+  }, []);
+
+  // تحضير صوت التقليب مرة واحدة
+  useEffect(() => {
+    flipAudioRef.current = new Audio("/sounds/page-flip.mp3");
+  }, []);
+
+  // إنشاء خريطة السور والأجزاء
   const suraMap = {};
   const juzMap = {};
   for (let entry of pageData) {
@@ -39,10 +71,11 @@ export default function HafsPage() {
   const suraNames = Object.keys(suraMap);
   const juzNumbers = Object.keys(juzMap);
 
-  // دالة تتبع السكرول لتحديث الصفحة والسورة والجزء الحالي
+  // التعامل مع السكرول وتحديث المعلومات
   const handleScroll = () => {
-    const scrollLeft = scrollContainerRef.current.scrollLeft;
-    const pageWidth = scrollContainerRef.current.clientWidth;
+    const container = scrollContainerRef.current;
+    const scrollLeft = container.scrollLeft;
+    const pageWidth = container.clientWidth;
     const newPage = Math.round(scrollLeft / pageWidth) + 1;
     setCurrentPage(newPage);
 
@@ -52,11 +85,10 @@ export default function HafsPage() {
       setCurrentJuz(info.juz);
     }
 
-    // حفظ آخر صفحة في localStorage
     localStorage.setItem("lastVisitedPage", newPage);
   };
 
-  // دالة للانتقال إلى صفحة معينة مع صوت التقليب
+  // الانتقال لصفحة مع صوت تقليب
   const scrollToPage = (page) => {
     const container = scrollContainerRef.current;
     const pageWidth = container.clientWidth;
@@ -64,22 +96,13 @@ export default function HafsPage() {
       left: (page - 1) * pageWidth,
       behavior: "smooth",
     });
-    playFlipSound();
+    if (userInteracted && flipAudioRef.current) {
+      flipAudioRef.current.play().catch(() => {});
+    }
   };
 
-  // دالة لتشغيل صوت تقليب الصفحة
-  const playFlipSound = () => {
-    if (!userInteracted) return; // تأكد أن المستخدم تفاعل قبل تشغيل الصوت
-
-    const audio = new Audio("/sounds/page-flip.mp3");
-    audio.play().catch((err) => {
-      // تجاهل الخطأ بدون طباعة في الكونسول
-    });
-  };
-
-  // عند أول تحميل للصفحة
+  // التعامل مع أول تحميل للصفحة
   useEffect(() => {
-    // استرجاع آخر صفحة من localStorage لو موجودة
     const savedPage = parseInt(localStorage.getItem("lastVisitedPage"), 10);
     if (savedPage && !isNaN(savedPage)) {
       setCurrentPage(savedPage);
@@ -87,33 +110,25 @@ export default function HafsPage() {
         scrollToPage(savedPage);
       }, 100);
     } else {
-      handleScroll(); // لو مفيش صفحة محفوظة، تحديث الوضع الحالي
+      handleScroll();
     }
-
-    // أول تفاعل مع الصفحة نعتبره userInteracted
-    const handleFirstInteraction = () => {
-      setUserInteracted(true);
-      window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("keydown", handleFirstInteraction);
-      window.removeEventListener("scroll", handleFirstInteraction);
-    };
-
-    window.addEventListener("click", handleFirstInteraction);
-    window.addEventListener("keydown", handleFirstInteraction);
-    window.addEventListener("scroll", handleFirstInteraction);
-
-    return () => {
-      window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("keydown", handleFirstInteraction);
-      window.removeEventListener("scroll", handleFirstInteraction);
-    };
   }, []);
 
-  const currentPageRange = versesJson.filter(
-    (v) => v.page_number === currentPage
-  );
+  // تسريع استخراج آيات الصفحة
+  const versesByPage = useMemo(() => {
+    const map = {};
+    for (const verse of versesJson) {
+      if (!map[verse.page_number]) {
+        map[verse.page_number] = [];
+      }
+      map[verse.page_number].push(verse);
+    }
+    return map;
+  }, []);
 
-  // دالة لتظليل آية محددة
+  const currentPageRange = versesByPage[currentPage] || [];
+
+  // تظليل آية
   const highlightVerse = (chapter_id, verse_number) => {
     const verse = versesJson.find(
       (v) => v.chapter_id === chapter_id && v.verse_number === verse_number
@@ -125,7 +140,7 @@ export default function HafsPage() {
 
   return (
     <div className="h-[100dvh] w-screen overflow-hidden flex flex-col" dir="rtl">
-      {/* رأس الصفحة */}
+      {/* الهيدر */}
       <div className="flex-none h-16 md:h-20">
         <Header
           currentSura={currentSura}
@@ -150,7 +165,7 @@ export default function HafsPage() {
       >
         {Array.from({ length: totalPages }, (_, i) => {
           const page = i + 1;
-          const versesOnPage = versesJson.filter((v) => v.page_number === page);
+          const versesOnPage = versesByPage[page] || [];
 
           return (
             <div
@@ -174,7 +189,7 @@ export default function HafsPage() {
                 priority={page === currentPage}
               />
 
-              {/* تظليل الآيات باستخدام SVG */}
+              {/* تظليل الآيات */}
               <svg
                 className="absolute top-0 left-0 w-full h-full z-10"
                 viewBox={`0 0 ${imageWidth} ${imageHeight}`}
@@ -196,10 +211,7 @@ export default function HafsPage() {
                   const isSelected = verse.id === highlightedVerseId;
 
                   return (
-                    <g
-                      key={verse.id}
-                      id={`ayah-${verse.chapter_id}-${verse.verse_number}`}
-                    >
+                    <g key={verse.id}>
                       <polygon
                         points={points.join(" ")}
                         fill={isSelected ? "rgba(0, 123, 255, 0.2)" : "transparent"}
@@ -220,7 +232,7 @@ export default function HafsPage() {
         })}
       </div>
 
-      {/* تذييل الصفحة */}
+      {/* الفوتر */}
       <div className="flex-none h-12 md:h-16">
         <Footer currentPageRange={currentPageRange} highlightVerse={highlightVerse} />
       </div>
@@ -231,13 +243,11 @@ export default function HafsPage() {
         suraMap={suraMap}
         scrollToPage={scrollToPage}
       />
-
       <JuzOffcanvas
         juzNumbers={juzNumbers}
         juzMap={juzMap}
         scrollToPage={scrollToPage}
       />
-
       <VerseOffcanvas
         selectedVerse={selectedVerse}
         setSelectedVerse={(verse) => {
@@ -245,6 +255,7 @@ export default function HafsPage() {
           setHighlightedVerseId(verse?.id ?? null);
         }}
         scrollToPage={scrollToPage}
+        versesData={versesJson}
       />
     </div>
   );
