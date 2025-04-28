@@ -178,8 +178,8 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
               <Image
                 src={tab.icon} 
                 alt={`${tab.label} icon`} 
-                width={24}
-                height={24} 
+                width={30}
+                height={30} 
                 loading= "lazy"
               />
             </div>
