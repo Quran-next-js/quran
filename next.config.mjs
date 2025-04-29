@@ -2,10 +2,7 @@ import withPWA from 'next-pwa';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    // صححنا هنا: turbo يجب أن يكون كائن أو نحذفه نهائيًا
-    // turbo: false, ← ❌ خطأ: كان يسبب التحذير
-  },
+  experimental: {},
 
   images: {
     unoptimized: true,
@@ -37,7 +34,10 @@ export default withPWA({
   dest: 'public',
   register: true,
   skipWaiting: true,
-  navigateFallback: '/offline.html', // ✅ دعم عرض صفحة عند انقطاع الإنترنت
+  navigateFallback: '/offline.html',
+  maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // ✅ لحل تحذير ملفات JSON الكبيرة
+  disable: process.env.NODE_ENV === 'development', // لا يعمل PWA في dev لتجنب المشاكل
+
   runtimeCaching: [
     {
       urlPattern: /^\/$/, // الصفحة الرئيسية
@@ -45,6 +45,7 @@ export default withPWA({
       options: {
         cacheName: 'start-page',
         expiration: { maxEntries: 1, maxAgeSeconds: 7 * 24 * 60 * 60 },
+        networkTimeoutSeconds: 10,
       },
     },
     {
@@ -53,14 +54,18 @@ export default withPWA({
       options: {
         cacheName: 'hafs-page',
         expiration: { maxEntries: 1, maxAgeSeconds: 7 * 24 * 60 * 60 },
+        networkTimeoutSeconds: 10,
       },
     },
     {
-      urlPattern: /\/quran\/.*\.json$/, // بيانات الآيات
+      urlPattern: /\/data\/.*\.json$/, // بيانات JSON
       handler: 'CacheFirst',
       options: {
         cacheName: 'quran-json',
-        expiration: { maxEntries: 100, maxAgeSeconds: 30 * 24 * 60 * 60 },
+        expiration: { maxEntries: 200, maxAgeSeconds: 30 * 24 * 60 * 60 },
+        cacheableResponse: {
+          statuses: [0, 200],
+        },
       },
     },
     {
@@ -68,7 +73,10 @@ export default withPWA({
       handler: 'CacheFirst',
       options: {
         cacheName: 'quran-images',
-        expiration: { maxEntries: 600, maxAgeSeconds: 30 * 24 * 60 * 60 },
+        expiration: { maxEntries: 700, maxAgeSeconds: 30 * 24 * 60 * 60 },
+        cacheableResponse: {
+          statuses: [0, 200],
+        },
       },
     },
   ],
