@@ -2,7 +2,7 @@
 
 // استدعاء الحزم
 import { useEffect, useRef, useState, useMemo } from "react";
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 import pageData from "@/data/page_info.json"; // بيانات السور والأجزاء
 import versesJson from "@/data/verses.json"; // بيانات الآيات وإحداثياتها
 
@@ -12,10 +12,11 @@ import Footer from "./Footer";
 import PageViewer from "./PageViewer"; //  استدعاء مكون عرض الصفحات 
 
 // استدعاء المكونات بطريقة dynamic لتقليل حجم الباندل
-const SuraOffcanvas = dynamic(() => import('./SuraOffcanvas'), { ssr: false });
-const JuzOffcanvas = dynamic(() => import('./JuzOffcanvas'), { ssr: false });
-const VerseOffcanvas = dynamic(() => import('./VerseOffcanvas'), { ssr: false });
+const SuraOffcanvas = dynamicImport(() => import('./SuraOffcanvas'), { ssr: false });
+const JuzOffcanvas = dynamicImport(() => import('./JuzOffcanvas'), { ssr: false });
+const VerseOffcanvas = dynamicImport(() => import('./VerseOffcanvas'), { ssr: false });
 
+export const dynamic = 'force-static' // ⬅️ ضروري لتوليد الصفحة بشكل ثابت
 export default function HafsPage() {
   // المتغيرات والحالات
   const totalPages = 604;

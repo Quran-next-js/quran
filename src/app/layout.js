@@ -19,6 +19,18 @@ export default function RootLayout({ children }) {
     <html lang="ar" dir="rtl">
       <head>
       <link rel="manifest" href="/manifest.json" />
+      {/* Google Analytics script */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XKV4CEL8K"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-6XKV4CEL8K');
+            `,
+          }}
+        />
       </head>
       <body
         className={`${cairo.variable} antialiased`}

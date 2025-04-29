@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+export const dynamic = 'force-static' // ⬅️ ضروري لتوليد الصفحة بشكل ثابت
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);

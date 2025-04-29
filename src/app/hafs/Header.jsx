@@ -75,7 +75,7 @@ export default function Header({ currentSura, currentJuz, currentPage, totalPage
             className="text-white font-semibold text-lg surahName"
             onClick={() => openOffcanvas("suraList")}
          >
-            {`سورة ${currentSura}` || "السورة"}
+            {`سورة ${currentSura}`}
          </button>
 
          <div className="relative">
