@@ -24,8 +24,8 @@ export default function PageViewer({
       style={{
         scrollSnapType: "x mandatory",
         WebkitOverflowScrolling: "touch",
-        direction: "rtl",
-        transform: "scaleX(-1)",
+        direction: "ltr",
+        // transform: "scaleX(-1)",
       }}
     >
       {Array.from({ length: totalPages }, (_, i) => {
@@ -39,7 +39,7 @@ export default function PageViewer({
             style={{
               minWidth: "100vw",
               height: "100%",
-              transform: "scaleX(-1)",
+              // transform: "scaleX(-1)",
             }}
           >
             {/* صورة الصفحة */}

@@ -99,7 +99,10 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-
+.android-device .scroll-container {
+  direction: rtl !important;
+  flex-direction: row-reverse !important;
+}
 
 /* الاستماع */
 .highlighted-ayah {

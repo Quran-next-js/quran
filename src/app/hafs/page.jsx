@@ -75,8 +75,9 @@ export default function HafsPage() {
     const container = scrollContainerRef.current;
     const scrollLeft = container.scrollLeft;
     const pageWidth = container.clientWidth;
-    const newPage = Math.round(scrollLeft / pageWidth) + 1;
+    const newPage = Math.round(scrollLeft / pageWidth * -1) + 1;
     setCurrentPage(newPage);
+    console.log("👀 Scrolling to page:", newPage);
     const info = pageData.find((p) => p.page === newPage);
     if (info) {
       setCurrentSura(info.sura);
@@ -90,7 +91,7 @@ export default function HafsPage() {
     const container = scrollContainerRef.current;
     const pageWidth = container.clientWidth;
     container.scrollTo({
-      left: (page - 1) * pageWidth,
+      left: (page - 1) * pageWidth * -1,
       behavior: "smooth",
     });
     if (userInteracted && flipAudioRef.current) {

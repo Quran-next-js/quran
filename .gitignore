@@ -3,6 +3,7 @@
 /public/audio/qraat
 /public/images
 /public/data
+/public/audio
 # dependencies
 /node_modules
 /.pnp
