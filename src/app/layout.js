@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import { Cairo } from 'next/font/google';
+import PWARegister from '@/components/PWARegister';
 
 const cairo = Cairo({
   subsets: ['arabic'],
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${cairo.variable} antialiased`}>
         {children}
+        <PWARegister />
       </body>
     </html>
   );
