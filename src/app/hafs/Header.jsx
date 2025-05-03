@@ -70,9 +70,9 @@ export default function Header({ currentSura, currentJuz, currentPage, totalPage
 
 
    return (
-      <header className="h-16 bg-green-800 text-white flex items-center justify-between px-4 sticky top-0 z-10 shadow-md">
+      <header className="h-16 bg-green-900 text-white flex items-center justify-between px-4 sticky top-0 z-10 shadow-md header-decorated">
          <button
-            className="text-white font-semibold text-lg surahName"
+            className="text-white font-semibold text-lg surahName decorated-button"
             onClick={() => openOffcanvas("suraList")}
          >
             {`سورة ${currentSura}`}
@@ -99,7 +99,7 @@ export default function Header({ currentSura, currentJuz, currentPage, totalPage
          </div>
 
          <button
-            className="text-white font-semibold text-lg juzName"
+            className="text-white font-semibold text-lg juzName decorated-button"
             onClick={() => openOffcanvas("juzList")}
          >
             {`الجزء ${getArabicOrdinal(Number(currentJuz))}`}

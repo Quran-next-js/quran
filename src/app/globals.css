@@ -19,6 +19,51 @@ body {
   /* font-family: "Amiri", serif; */
   font-family: "KSAR", sans-serif;
 }
+
+.header-decorated::before,
+.header-decorated::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: conic-gradient(from 45deg, transparent 0deg 90deg, rgba(255, 255, 255, 0.2) 90deg 180deg);
+  opacity: 0.2;
+  z-index: 0;
+}
+.header-decorated::before {
+  top: 0;
+  left: 0;
+}
+.header-decorated::after {
+  top: 0;
+  right: 0;
+}
+.decorated-button {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  background-image: linear-gradient(#1b433200, #1b433200), repeating-linear-gradient(45deg, #f0e6d200, #f0e6d20d 2px, #0000 2px 4px);
+    background-origin: border-box;
+  background-clip: content-box, border-box;
+  border-radius: 12px;
+  font-family: "Amiri", "Cairo", serif;
+  z-index: 1;
+}
+.decorated-button::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: -1;
+}
+
 .surahName,
 .juzName {
   /* font-family: "arfonts-motken-unicode-claseec", sans-serif; */
@@ -143,7 +188,10 @@ input[type="range"]::-moz-range-thumb:hover {
   background: #22c55e;
 }
 
-
+.accordion-button {
+  padding: 10px 5px !important;
+  background-color: #cfe2ff57  !important;
+}
 
 @keyframes shake {
   0% { transform: translateX(0); }
