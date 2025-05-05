@@ -45,14 +45,14 @@ export default function GrammarTab({ selectedVerse }) {
   }
 
   return (
-    <div className="text-white text-end px-0 space-y-0">
-      <div className="border border-sky-700 p-2 rounded-lg bg-sky-900/5">
+    <div className="text-end px-0 space-y-0">
+      <div className="border border-sky-700 p-2 rounded-lg">
         {grammarItems.map((item, index) => (
           <div
             key={index}
-            className="border border-sky-700 p-2 mb-2 rounded-lg bg-sky-900/5"
+            className="border border-sky-700 p-2 mb-2 rounded-lg "
           >
-            <p className="leading-loose text-dark text-justify">
+            <p className="leading-loose text-justify">
               <span className="badge bg-secondary ms-3"> {item.words} </span>
               {item.grammar}
             </p>

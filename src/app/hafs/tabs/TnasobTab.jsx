@@ -32,9 +32,9 @@ export default function TnasobTab({ selectedVerse }) {
   }
 
   return (
-    <div className="text-dark text-end px-0 space-y-0">
+    <div className="text-end px-0 space-y-0">
       {tnasob.map((item, index) => (
-        <div key={index} className="border border-amber-500 p-4 rounded-lg bg-amber-900/5">
+        <div key={index} className="border border-amber-500 p-4 rounded-lg">
           <h4 className="mb-2 font-bold"><span className="badge bg-secondary">مناسبة الآية لما قبلها</span></h4>
           <p className="leading-loose text-justify">{item.content}</p>
           <h4 className="text-center py-3 ayah">

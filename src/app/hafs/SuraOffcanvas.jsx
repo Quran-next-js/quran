@@ -4,12 +4,12 @@
 export default function SuraOffcanvas({ suraMap, suraNames, scrollToPage }) {
   return (
     <div
-      className="offcanvas offcanvas-end text-bg-light"
+      className="offcanvas offcanvas-end offcanvas-custom-bg"
       tabIndex="-1"
       id="suraList"
       aria-labelledby="suraListLabel"
     >
-      <div className="offcanvas-header bg-green-600 text-white">
+      <div className="offcanvas-header bg-green-600 ">
         <h5 className="offcanvas-title surahName" id="suraListLabel">قائمة السور</h5>
         <button
           type="button"
@@ -23,7 +23,7 @@ export default function SuraOffcanvas({ suraMap, suraNames, scrollToPage }) {
           {suraNames.map((sura, index) => (
             <li
               key={sura}
-              className="flex items-center justify-between bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition hover:bg-green-50"
+              className="flex items-center justify-between  rounded-lg shadow-md overflow-hidden cursor-pointer transition hover:bg-green-50 border border-gray-600"
               onClick={() => {
                 const page = suraMap[sura];
                 scrollToPage(page);
@@ -36,7 +36,7 @@ export default function SuraOffcanvas({ suraMap, suraNames, scrollToPage }) {
               </div>
 
               {/* اسم السورة */}
-              <div className="flex-1 p-3 text-right juzName">
+              <div className="flex-1 p-2 text-right juzName">
                 سورة {sura}
                 {/* صفحة السورة */}
                 <span className="text-gray-500 text-xs float-left">   صفحة {suraMap[sura]} </span>

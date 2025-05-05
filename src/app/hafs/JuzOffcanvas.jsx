@@ -15,7 +15,7 @@ export default function JuzOffcanvas({ juzMap, juzNumbers, scrollToPage }) {
 
   return (
     <div
-      className="offcanvas offcanvas-start text-bg-light"
+      className="offcanvas offcanvas-start offcanvas-custom-bg"
       tabIndex="-1"
       id="juzList"
       aria-labelledby="juzListLabel"
@@ -34,7 +34,7 @@ export default function JuzOffcanvas({ juzMap, juzNumbers, scrollToPage }) {
           {juzNumbers.map((juz) => (
             <li
               key={juz}
-              className="flex items-center justify-between bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition hover:bg-green-50"
+              className="flex items-center justify-between  rounded-lg shadow-md overflow-hidden cursor-pointer transition hover:bg-green-50 border border-gray-600"
               onClick={() => {
                 const page = juzMap[juz];
                 scrollToPage(page);
@@ -47,7 +47,7 @@ export default function JuzOffcanvas({ juzMap, juzNumbers, scrollToPage }) {
               </div>
 
               {/* اسم الجزء (مثلاً "الجزء الأول") */}
-              <div className="flex-1 p-3 text-right juzName">
+              <div className="flex-1 p-2 text-right juzName">
                 الجزء {getArabicOrdinal(Number(juz))}
               </div>
             </li>

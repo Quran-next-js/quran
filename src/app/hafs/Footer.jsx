@@ -6,12 +6,13 @@ import BookmarkOffcanvas from "./BookmarkOffcanvas";
 import SettingOffcanvas from "./SettingOffcanvas";
 import StudingOffcanvas from "./StudingOffcanvas";
 
-export default function Footer({ currentPageRange, highlightVerse }) {
+export default function Footer({ currentPageRange, highlightVerse, goToPage, currentPage, setIsMemorizationMode, isMemorizationMode  }) {
 
   const [showListen, setShowListen] = useState(false);
   const [showBookmark, setShowBookmark] = useState(false);
   const [showSettings, setShowSettings] = useState(false); 
   const [showStudings, setShowStuding] = useState(false);
+
 
   return (
     <>
@@ -87,6 +88,10 @@ export default function Footer({ currentPageRange, highlightVerse }) {
       <SettingOffcanvas
         isOpen={showSettings}
         setIsOpen={setShowSettings}
+        goToPage={goToPage}
+        currentPage={currentPage}
+        setIsMemorizationMode={setIsMemorizationMode}
+        isMemorizationMode={isMemorizationMode}
       />
     </>
   );

@@ -154,8 +154,11 @@ export default function ListenOffcanvas({
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-1 z-50 transition-transform duration-300 ${isOpen ? "translate-y-0" : "translate-y-full"
-        }`}
+      className={`fixed bottom-0 left-0 right-0 border-t shadow-lg p-1 z-50 transition-transform duration-300 ${isOpen ? "translate-y-0" : "translate-y-full"
+        } 
+  bg-body-secondary 
+  border-body-tertiary 
+  text-body-emphasis`}
     >
       <div className="flex justify-between items-center mb-4 p-2 bg-green-600 text-white">
         <h5 className="text-lg font-semibold">🎧 الاستماع </h5>

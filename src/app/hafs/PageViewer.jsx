@@ -1,6 +1,5 @@
 "use client";
 
-// استدعاء الحزم
 import { useRef } from "react";
 import Image from "next/image";
 
@@ -15,6 +14,9 @@ export default function PageViewer({
   highlightedVerseId,
   setSelectedVerse,
   setHighlightedVerseId,
+  isMemorizationMode,
+  hoveredVerses, 
+  setHoveredVerses,
 }) {
   return (
     <div
@@ -25,7 +27,6 @@ export default function PageViewer({
         scrollSnapType: "x mandatory",
         WebkitOverflowScrolling: "touch",
         direction: "ltr",
-        // transform: "scaleX(-1)",
       }}
     >
       {Array.from({ length: totalPages }, (_, i) => {
@@ -39,10 +40,8 @@ export default function PageViewer({
             style={{
               minWidth: "100vw",
               height: "100%",
-              // transform: "scaleX(-1)",
             }}
           >
-            {/* صورة الصفحة */}
             <Image
               src={`https://ik.imagekit.io/hefz/quran/${page}.webp`}
               id={`page-${page}`}
@@ -55,7 +54,6 @@ export default function PageViewer({
               priority={page === currentPage}
             />
 
-            {/* تظليل الآيات */}
             <svg
               className="absolute top-0 left-0 w-full h-full z-10"
               viewBox={`0 0 ${imageWidth} ${imageHeight}`}
@@ -74,19 +72,46 @@ export default function PageViewer({
                   points.push(`${coordsArray[i]},${coordsArray[i + 1]}`);
                 }
 
+               
+                const isHovered = hoveredVerses.includes(verse.id);
                 const isSelected = verse.id === highlightedVerseId;
 
                 return (
                   <g key={verse.id} id={`ayah-${verse.chapter_id}-${verse.verse_number}`}>
-                    <polygon
+                     <polygon
                       points={points.join(" ")}
-                      fill={isSelected ? "rgba(0, 123, 255, 0.2)" : "transparent"}
+                      fill={
+                        isMemorizationMode
+                          ? isHovered 
+                            ? "transparent" 
+                            : "rgba(0, 0, 0, 0.99)"
+                          : isSelected
+                            ? "rgba(0, 123, 255, 0.2)"
+                            : "transparent"
+                      }
                       stroke={isSelected ? "#007bff" : "transparent"}
                       strokeWidth="2"
-                      style={{ cursor: "pointer" }}
+                      style={{
+                        cursor: isMemorizationMode ? "default" : "pointer",
+                        transition: "fill 0.3s ease",
+                      }}
+                      onMouseEnter={() => {
+                        if (isMemorizationMode) {
+                          setHoveredVerses(prev => [...prev, verse.id]);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (isMemorizationMode) {
+                          setHoveredVerses(prev => 
+                            prev.filter(id => id !== verse.id)
+                          );
+                        }
+                      }}
                       onClick={() => {
-                        setSelectedVerse(verse);
-                        setHighlightedVerseId(verse.id);
+                        if (!isMemorizationMode) {
+                          setSelectedVerse(verse);
+                          setHighlightedVerseId(verse.id);
+                        }
                       }}
                     />
                   </g>

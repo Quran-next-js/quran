@@ -34,9 +34,9 @@ export default function ReadingTab({ selectedVerse }) {
   }
 
   return (
-    <div className="text-black text-end px-0 space-y-0">
+    <div className="text-end px-0 space-y-0">
       {reading.sound_link && (
-        <div className="border border-sky-700 p-4 rounded-lg bg-sky-900/5">
+        <div className="border border-sky-700 p-4 rounded-lg">
           <H5AudioPlayer
             src={`/audio/qraat/${reading.sound_link}.mp3`}
             autoPlay={false}
@@ -47,7 +47,7 @@ export default function ReadingTab({ selectedVerse }) {
         </div>
       )}
       {reading.reading && (
-        <div className="border border-sky-700 p-4 rounded-lg bg-sky-900/5">
+        <div className="border border-sky-700 p-4 rounded-lg">
           <p dangerouslySetInnerHTML={{ __html: reading.reading }} />
         </div>
       )}

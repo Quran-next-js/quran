@@ -31,6 +31,9 @@ export default function HafsPage() {
   const [highlightedVerseId, setHighlightedVerseId] = useState(null);
   const [userInteracted, setUserInteracted] = useState(false);
 
+  const [isMemorizationMode, setIsMemorizationMode] = useState(false);
+  const [hoveredVerses, setHoveredVerses] = useState([])
+
   const flipAudioRef = useRef(null); // مرجع لصوت التقليب
 
   // تحميل مكتبة Bootstrap JS عند أول تحميل
@@ -39,6 +42,15 @@ export default function HafsPage() {
       console.error("فشل تحميل Bootstrap:", err)
     );
   }, []);
+
+
+  useEffect(() => {
+    if (!isMemorizationMode) {
+      setHoveredVerses([]); // إعادة تعيين الحالة الجديدة
+      setHighlightedVerseId(null);
+      setSelectedVerse(null);
+    }
+  }, [isMemorizationMode]);
 
   // تفعيل أول تفاعل مع الصفحة
   useEffect(() => {
@@ -139,7 +151,7 @@ export default function HafsPage() {
   return (
     <>
       <SEOUpdater currentPage={currentPage} />
-      
+
       <div className="h-[100dvh] w-screen overflow-hidden flex flex-col" dir="rtl">
         {/* الهيدر */}
         <div className="flex-none h-16 md:h-20">
@@ -164,11 +176,21 @@ export default function HafsPage() {
           highlightedVerseId={highlightedVerseId}
           setSelectedVerse={setSelectedVerse}
           setHighlightedVerseId={setHighlightedVerseId}
+          isMemorizationMode={isMemorizationMode}
+          hoveredVerses={hoveredVerses}
+          setHoveredVerses={setHoveredVerses}
         />
 
         {/* الفوتر */}
         <div className="flex-none h-12 md:h-16">
-          <Footer currentPageRange={currentPageRange} highlightVerse={highlightVerse} />
+          <Footer
+            currentPageRange={currentPageRange}
+            highlightVerse={highlightVerse}
+            goToPage={scrollToPage}
+            currentPage={currentPage}
+            setIsMemorizationMode={setIsMemorizationMode}
+            isMemorizationMode={isMemorizationMode}
+          />
         </div>
 
         {/* النوافذ الجانبية */}
@@ -190,6 +212,7 @@ export default function HafsPage() {
           }}
           scrollToPage={scrollToPage}
           versesData={versesJson}
+          isMemorizationMode={isMemorizationMode}
         />
       </div>
     </>

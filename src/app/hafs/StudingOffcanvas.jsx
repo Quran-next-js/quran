@@ -11,7 +11,7 @@ export default function StudingOffcanvas({ isOpen, setIsOpen, chapterId }) {
     fetch(`/data/chapter_studies/${chapterId}.json`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Study data:", data);
+        // console.log("Study data:", data);
         const firstEntry = data[0]; // <-- هذا هو الكائن الفعلي
         setStudyData(firstEntry);
       })
@@ -40,14 +40,14 @@ export default function StudingOffcanvas({ isOpen, setIsOpen, chapterId }) {
       placement="bottom"
       scroll
       backdrop
-      style={{ height: '75%' }}
+      style={{ height: '85%' }}
     >
       <Offcanvas.Header closeButton className="bg-green-600 text-white" style={{ direction: "rtl" }}>
         <Offcanvas.Title>  مدارسة سورة {studyData?.name_arabic || ""} </Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body className="text-justify text-lg" style={{ direction: "rtl" }}>
         {studyData?.title && (
-          <h4 className="text-lg font-bold mb-2 p-2 bg-green-300 text-center rounded"> {studyData.title} </h4>
+          <h4 className="text-lg font-bold mb-2 p-2 custom-bg text-center rounded"> {studyData.title} </h4>
         )}
         {/* //   {/* عرض الأقسام */}
         {[section1, section2, section3].map((section, idx) => (
@@ -55,8 +55,8 @@ export default function StudingOffcanvas({ isOpen, setIsOpen, chapterId }) {
             <div key={idx} className="mb-6">
               {section.keys.map((key, i) => (
                 <div key={i} className="mb-3">
-                  <div className="text-2xl font-semibold text-blue-700 p-2 bg-sky-900/5">{key}</div>
-                  <div className="text-gray-800 text-2xl mt-1 leading-relaxed">{section.values[i]}</div>
+                  <div className="text-2xl font-semibold text-blue-700 text-primary-emphasis p-2">{key}</div>
+                  <div className="text-2xl mt-1 leading-relaxed">{section.values[i]}</div>
                 </div>
               ))}
             </div>
@@ -67,11 +67,6 @@ export default function StudingOffcanvas({ isOpen, setIsOpen, chapterId }) {
           <div className="text-sm text-gray-500 text-center">لا توجد بيانات للعرض</div>
         )}
       </Offcanvas.Body>
-
-      <div className="offcanvas-footer bg-green-600 text-white d-flex justify-content-around p-3 text-sm">
-
-      </div>
-
     </Offcanvas>
   );
 }

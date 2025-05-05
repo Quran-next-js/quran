@@ -20,6 +20,26 @@ body {
   font-family: "KSAR", sans-serif;
 }
 
+[data-bs-theme="light"] .custom-bg {
+  background-color: #e6ffee;
+  color: #004d00;
+}
+
+[data-bs-theme="dark"] .custom-bg {
+  background-color: #003300;
+  color: #ccffcc;
+}
+
+[data-bs-theme="light"] .offcanvas-custom-bg, .custom_card {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+[data-bs-theme="dark"] .offcanvas-custom-bg, .custom_card {
+  background-color: #212529;
+  color: #ffffff;
+}
+
 .header-decorated::before,
 .header-decorated::after {
   content: "";
@@ -64,6 +84,13 @@ body {
   z-index: -1;
 }
 
+.memorization-hover {
+  transition: fill 0.3s ease !important;
+}
+
+.memorization-hover:hover {
+  fill: transparent !important;
+}
 .surahName,
 .juzName {
   /* font-family: "arfonts-motken-unicode-claseec", sans-serif; */

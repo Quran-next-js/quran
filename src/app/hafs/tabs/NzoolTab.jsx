@@ -31,9 +31,9 @@ export default function NzoolTab({ selectedVerse }) {
   }
 
   return (
-    <div className="text-white text-end px-0 space-y-0">
-      <div className="border border-sky-700 p-4 rounded-lg bg-sky-900/5">
-        <p className="leading-loose text-dark text-justify">
+    <div className="text-end px-0 space-y-0">
+      <div className="border border-sky-700 p-4 rounded-lg">
+        <p className="leading-loose text-justify">
           {nzool.reason}
           {nzool.source && nzool.source !== "____" && (
             <span className="text-sm text-gray-400 text-start mt-3 d-block">المصدر: {nzool.source}</span>

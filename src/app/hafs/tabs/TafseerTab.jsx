@@ -38,11 +38,11 @@ export default function TafseerTab({ selectedVerse }) {
   }
 
   return (
-    <div className="text-white text-end px-0 space-y-0">
-      <div className="border border-sky-700 p-4 rounded-lg bg-sky-900/5">
-        <h4 className="text-dark mb-2 font-bold">التفسير الميسر:</h4>
+    <div className="text-end px-0 space-y-0">
+      <div className="border border-sky-700 p-4 rounded-lg">
+        <h4 className="mb-2 font-bold">التفسير الميسر:</h4>
         <p
-          className="leading-loose text-dark text-justify"
+          className="leading-loose text-justify"
           dangerouslySetInnerHTML={{ __html: tafseer.tafseer }}
         ></p>
       </div>
