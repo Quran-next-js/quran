@@ -4,16 +4,9 @@ import withPWA from "next-pwa";
 const nextConfig = {
   experimental: {},
 
-  // إعدادات الصور
+  // إعدادات الصور (تم إزالة remotePatterns لأنها لم تعد ضرورية)
   images: {
-    unoptimized: true, // تعطيل تحسين الصور
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "ik.imagekit.io",
-        pathname: "/hefz/quran/**", // السماح بصور المصحف
-      },
-    ],
+    unoptimized: true, // تعطيل تحسين الصور (اختياري حسب الحاجة)
   },
 
   // إعدادات الـ headers
@@ -34,36 +27,33 @@ const nextConfig = {
 
 export default withPWA({
   dest: "public", // مجلد الخدمة العامل
-  register: true, // التسجيل التلقائي
-  skipWaiting: true, // تخطي مرحلة الانتظار
-  navigateFallback: null, // تعطيل مؤقتًا لحل مشكلة offline.html
-  //navigateFallback: '/offline.html', // تفعيل الصفحة الاحتياطية
+  register: true,
+  skipWaiting: true,
+  navigateFallback: null, // مؤقتًا لحل مشكلة offline.html
+  // navigateFallback: '/offline.html',
   maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10MB لملفات JSON
 
-  // تعطيل PWA في وضع التطوير
   disable: process.env.NODE_ENV !== "production",
 
-  // قواعد التخزين المؤقت
   runtimeCaching: [
     {
       urlPattern: /\/offline\.html/,
-      handler: 'CacheFirst',
+      handler: "CacheFirst",
       options: {
-        cacheName: 'offline-page',
-        expiration: { maxEntries: 1 }
-      }
+        cacheName: "offline-page",
+        expiration: { maxEntries: 1 },
+      },
     },
-    // الحل الجذري لأخطاء الملفات الغير موجودة
     {
       urlPattern: /\/_next\/.*(manifest|client-reference|loadable)\.(js|json)$/,
-      handler: 'NetworkOnly'
+      handler: "NetworkOnly",
     },
     {
       urlPattern: /^\/$/, // الصفحة الرئيسية
       handler: "NetworkFirst",
       options: {
         cacheName: "start-page",
-        expiration: { maxEntries: 1, maxAgeSeconds: 604800 }, // 7 أيام
+        expiration: { maxEntries: 1, maxAgeSeconds: 604800 },
         networkTimeoutSeconds: 10,
       },
     },
@@ -81,34 +71,30 @@ export default withPWA({
       handler: "CacheFirst",
       options: {
         cacheName: "quran-json",
-        expiration: { maxEntries: 200, maxAgeSeconds: 2592000 }, // 30 يومًا
+        expiration: { maxEntries: 200, maxAgeSeconds: 2592000 },
         cacheableResponse: { statuses: [0, 200] },
       },
     },
     {
-      urlPattern: /^https:\/\/ik\.imagekit\.io\/hefz\/quran\//, // الصور الخارجية
+      urlPattern: /\/images\/quran\/.*\.(png|jpg|jpeg|webp|gif|svg)$/, // الصور المحلية
       handler: "CacheFirst",
       options: {
-        cacheName: "quran-images",
+        cacheName: "local-quran-images",
         expiration: { maxEntries: 700, maxAgeSeconds: 2592000 },
         cacheableResponse: { statuses: [0, 200] },
       },
     },
   ],
 
-  // استبعاد الملفات المسببة للمشاكل
   buildExcludes: [
     /(build-manifest|app-build-manifest|react-loadable-manifest|middleware-manifest|client-reference-manifest)\.(js|json)$/,
     /chunks\/.*\.js$/,
   ],
 
-  // إعدادات إضافية
   additionalManifestEntries: [],
-  exclude: [
-    /.*-manifest\.(js|json)$/,
-  ],
-  clientsClaim: true, // المطالبة بالتحكم فورًا
-  cleanupOutdatedCaches: true, // تنظيف الكاش القديم
+  exclude: [/.*-manifest\.(js|json)$/],
+  clientsClaim: true,
+  cleanupOutdatedCaches: true,
   dontCacheBustURLsMatching: /^\/_next\//,
   ignoreURLParametersMatching: [/.*/],
   modifyURLPrefix: {

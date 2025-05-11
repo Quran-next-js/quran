@@ -43,7 +43,7 @@ export default function PageViewer({
             }}
           >
             <Image
-              src={`https://ik.imagekit.io/hefz/quran/${page}.webp`}
+              src={`images/quran/${page}.webp`}
               id={`page-${page}`}
               alt={`صفحة ${page}`}
               title={`الحفظ الميسر صفحة ${page}`}
