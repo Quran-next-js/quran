@@ -60,7 +60,7 @@ export default function BookmarkOffcanvas({ isOpen, setIsOpen, currentPageRange 
 
    return (
       <div
-         className={`fixed bottom-0 left-0 right-0 offcanvas-custom-bg border-t shadow-lg p-1 z-50 transition-transform duration-300 ${isOpen ? "translate-y-0" : "translate-y-full"
+         className={`bg-body-secondary fixed bottom-0 left-0 right-0 offcanvas-custom-bg border-t shadow-lg p-1 z-50 transition-transform duration-300 ${isOpen ? "translate-y-0" : "translate-y-full"
             }`}
       >
          <div className="flex justify-between items-center mb-4 p-2 bg-green-600 text-white">

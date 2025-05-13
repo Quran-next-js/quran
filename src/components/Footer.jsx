@@ -5,6 +5,7 @@ import ListenOffcanvas from "./ListenOffcanvas";
 import BookmarkOffcanvas from "./BookmarkOffcanvas";
 import SettingOffcanvas from "./SettingOffcanvas";
 import StudingOffcanvas from "./StudingOffcanvas";
+import SearchOffcanvas from "./SearchOffcanvas";
 
 export default function Footer({ currentPageRange, highlightVerse, goToPage, currentPage, setIsMemorizationMode, isMemorizationMode  }) {
 
@@ -12,6 +13,7 @@ export default function Footer({ currentPageRange, highlightVerse, goToPage, cur
   const [showBookmark, setShowBookmark] = useState(false);
   const [showSettings, setShowSettings] = useState(false); 
   const [showStudings, setShowStuding] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
 
   return (
@@ -41,6 +43,19 @@ export default function Footer({ currentPageRange, highlightVerse, goToPage, cur
               loading= "lazy"
             />
           </button>
+
+          <button title="بحث" onClick={() => setShowSearch(true)}>
+            <Image
+              src="/images/logo/search.webp"
+              alt="بحث"
+              title="بحث"
+              width={30}
+              height={30}
+              className="w-full h-full z-0"
+              loading="lazy"
+            />
+          </button>
+
           <button title="استماع" onClick={() => setShowListen(true)}>
           <Image
               src="/images/logo/volume.webp"
@@ -77,6 +92,13 @@ export default function Footer({ currentPageRange, highlightVerse, goToPage, cur
         isOpen={showBookmark}
         setIsOpen={setShowBookmark}
         currentPageRange={currentPageRange}
+      />
+
+      <SearchOffcanvas
+        isOpen={showSearch}
+        setIsOpen={setShowSearch}
+        scrollToPage={goToPage}
+        highlightVerse={highlightVerse}
       />
 
       <StudingOffcanvas

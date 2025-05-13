@@ -84,6 +84,15 @@ export default withPWA({
         cacheableResponse: { statuses: [0, 200] },
       },
     },
+    {
+      urlPattern: /\/images\/quran2\/.*\.(png|jpg|jpeg|webp|gif|svg)$/, // الصور المحلية
+      handler: "CacheFirst",
+      options: {
+        cacheName: "local-quran-images",
+        expiration: { maxEntries: 700, maxAgeSeconds: 2592000 },
+        cacheableResponse: { statuses: [0, 200] },
+      },
+    },
   ],
 
   buildExcludes: [

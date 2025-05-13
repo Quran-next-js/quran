@@ -100,11 +100,12 @@ export default function Home() {
                 </Link>
               </div>
               <div className="col-md-4 col-12">
-                <button
-                  className="btn btn-secondary btn-lg w-full mb-3 cursor-not-allowed"
+                <Link
+                  href="/warsh"
+                  className="btn btn-success btn-lg w-full mb-3"
                 >
-                  المصحف برواية ورش (قريبًا)
-                </button>
+                  المصحف برواية ورش
+                </Link>
               </div>
               <div className="col-md-4 col-12">
                 <button

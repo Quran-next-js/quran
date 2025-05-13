@@ -5,14 +5,14 @@ import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const MeaningsTab = dynamic(() => import('./tabs/MeaningsTab'), { ssr: false });
-const TafseerTab = dynamic(() => import('./tabs/TafseerTab'), { ssr: false });
-const NzoolTab = dynamic(() => import('./tabs/NzoolTab'), { ssr: false });
-const ReflectionTab = dynamic(() => import('./tabs/ReflectionTab'), { ssr: false });
-const TnasobTab = dynamic(() => import('./tabs/TnasobTab'), { ssr: false });
-const GrammarTab = dynamic(() => import('./tabs/GrammarTab'), { ssr: false });
-const ReadingTab = dynamic(() => import('./tabs/ReadingTab'), { ssr: false });
-const SimilaritiesTab = dynamic(() => import('./tabs/SimilaritiesTab'), { ssr: false });
+const MeaningsTab = dynamic(() => import('../app/hafs/tabs/MeaningsTab'), { ssr: false });
+const TafseerTab = dynamic(() => import('../app/hafs/tabs/TafseerTab'), { ssr: false });
+const NzoolTab = dynamic(() => import('../app/hafs/tabs/NzoolTab'), { ssr: false });
+const ReflectionTab = dynamic(() => import('../app/hafs/tabs/ReflectionTab'), { ssr: false });
+const TnasobTab = dynamic(() => import('../app/hafs/tabs/TnasobTab'), { ssr: false });
+const GrammarTab = dynamic(() => import('../app/hafs/tabs/GrammarTab'), { ssr: false });
+const ReadingTab = dynamic(() => import('../app/hafs/tabs/ReadingTab'), { ssr: false });
+const SimilaritiesTab = dynamic(() => import('../app/hafs/tabs/SimilaritiesTab'), { ssr: false });
 
 
 const tabs = [
