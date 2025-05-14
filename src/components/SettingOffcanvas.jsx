@@ -6,6 +6,7 @@ import DarkMode from "@/components/DarkMode";
 import ReminderTime from "@/components/ReminderTime";
 import MushfInfo from "@/components/MushfInfo";
 import Memoriz from "@/components/Memoriz";
+import MushafSwitcher from "@/components/MushafSwitcher";
 
 export default function SettingOffcanvas({ isOpen, setIsOpen, currentPage, goToPage, setIsMemorizationMode, isMemorizationMode }) {
   return (
@@ -47,7 +48,8 @@ export default function SettingOffcanvas({ isOpen, setIsOpen, currentPage, goToP
                 setIsMemorizationMode={setIsMemorizationMode}
                 isMemorizationMode={isMemorizationMode}
               />
-
+              {/* التبديل بين المصاحف */}
+              <MushafSwitcher />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
