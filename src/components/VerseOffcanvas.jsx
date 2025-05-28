@@ -119,6 +119,7 @@ export default function VerseOffcanvas({ selectedVerse, setSelectedVerse, scroll
         visibility: selectedVerse ? "visible" : "hidden",
         height: isLargeScreen ? "100%" : "100%",
         width: isLargeScreen ? "35%" : "100%",
+        zIndex: isLargeScreen ? 20 : 1050
       }}
     >
       <div className="offcanvas-header bg-green-600 text-white">

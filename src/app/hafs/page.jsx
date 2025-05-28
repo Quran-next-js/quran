@@ -2,6 +2,7 @@
 
 // استدعاء الحزم
 import { useEffect, useRef, useState, useMemo } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import dynamicImport from 'next/dynamic';
 import pageData from "@/data/page_info.json"; // بيانات السور والأجزاء
 import versesJson from "@/data/verses.json"; // بيانات الآيات وإحداثياتها
@@ -148,6 +149,8 @@ export default function HafsPage() {
     }
   };
 
+   const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false); // حالة جديدة لتتبع فتح/إغلاق الـ offcanvas
+
   return (
     <>
       <SEOUpdater currentPage={currentPage} />
@@ -165,6 +168,7 @@ export default function HafsPage() {
         </div>
 
         {/* عارض الصفحات */}
+       
         <PageViewer
           totalPages={totalPages}
           currentPage={currentPage}
@@ -180,6 +184,32 @@ export default function HafsPage() {
           hoveredVerses={hoveredVerses}
           setHoveredVerses={setHoveredVerses}
         />
+         {/* سهم الصفحة السابقة */}
+        {currentPage > 1 && (
+          <button
+            onClick={() => !isOffcanvasOpen && scrollToPage(currentPage - 1)}
+            className={`hidden md:block absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-3 rounded-full z-20 hover:bg-opacity-50 transition-all
+              ${isOffcanvasOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}`}
+            aria-label="الصفحة السابقة"
+            disabled={isOffcanvasOpen}
+          >
+            <FaArrowRight className="text-xl" />
+          </button>
+        )}
+        
+        {/* سهم الصفحة التالية */}
+        {currentPage < totalPages && (
+          <button
+            onClick={() => !isOffcanvasOpen && scrollToPage(currentPage + 1)}
+            className={`hidden md:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-3 rounded-full z-20 hover:bg-opacity-50 transition-all
+              ${isOffcanvasOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}`}
+            aria-label="الصفحة التالية"
+            disabled={isOffcanvasOpen}
+          >
+            <FaArrowLeft className="text-xl" />
+          </button>
+        )}
+        
 
         {/* الفوتر */}
         <div className="flex-none h-12 md:h-16">
@@ -209,6 +239,7 @@ export default function HafsPage() {
           setSelectedVerse={(verse) => {
             setSelectedVerse(verse);
             setHighlightedVerseId(verse?.id ?? null);
+            setIsOffcanvasOpen(!!verse);
           }}
           scrollToPage={scrollToPage}
           versesData={versesJson}
