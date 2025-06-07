@@ -37,10 +37,10 @@ export default function StudingOffcanvas({ isOpen, setIsOpen, chapterId }) {
     <Offcanvas
       show={isOpen}
       onHide={() => setIsOpen(false)}
-      placement="bottom"
+      placement="start"
       scroll
       backdrop
-      style={{ height: '85%' }}
+      style={{ height: '100%' }}
     >
       <Offcanvas.Header closeButton className="bg-green-600 text-white" style={{ direction: "rtl" }}>
         <Offcanvas.Title>  مدارسة سورة {studyData?.name_arabic || ""} </Offcanvas.Title>

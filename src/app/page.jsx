@@ -93,10 +93,18 @@ export default function Home() {
             <div className="row">
               <div className="col-md-4 col-12">
                 <Link
+                  href="/madina"
+                  className="btn btn-success btn-lg w-full mb-3"
+                >
+                  مصحف المدينة برواية حفص
+                </Link>
+              </div>
+              <div className="col-md-4 col-12">
+                <Link
                   href="/hafs"
                   className="btn btn-success btn-lg w-full mb-3"
                 >
-                  المصحف برواية حفص
+                  الحفظ الميسر برواية  حفص
                 </Link>
               </div>
               <div className="col-md-4 col-12">
@@ -104,7 +112,7 @@ export default function Home() {
                   href="/warsh"
                   className="btn btn-success btn-lg w-full mb-3"
                 >
-                  المصحف برواية ورش
+                  الحفظ الميسر برواية ورش
                 </Link>
               </div>
               <div className="col-md-4 col-12">

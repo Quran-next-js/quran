@@ -7,8 +7,9 @@ export default function MushafSwitcher() {
   const pathname = usePathname();
 
   const mushafs = [
-    { id: "hafs", name: "رواية حفص", available: true },
-    { id: "warsh", name: "رواية ورش", available: true },
+    { id: "madina", name: "مصحف المدينة - حفص", available: true },
+    { id: "hafs", name: "الحفظ الميسر - حفص", available: true },
+    { id: "warsh", name: "الحفظ الميسر - ورش", available: true },
     { id: "qaloon", name: "قالون", available: false },
   ];
 
@@ -21,17 +22,17 @@ export default function MushafSwitcher() {
   };
 
   return (
-    <div className="p-1 text-right mb-3 mt-2 shadow-md border border-gray-600 rounded-lg">
-      <h5 className="font-bold text-xl mb-2">اختيار المصحف:</h5>
-      <div className="d-flex justify-content-around">
+    <div className="p-4 text-right mb-4 mt-3 shadow-md border border-gray-600 rounded-lg">
+      <h5 className="font-bold text-xl mb-4">اختيار المصحف:</h5>
+      <div className="flex flex-wrap gap-3">
         {mushafs.map((mushaf) => (
           <button
             key={mushaf.id}
             disabled={!mushaf.available}
             onClick={() => handleChange(mushaf.id)}
-            className={`px-4 py-2 rounded-xl text-white text-lg font-semibold 
-              ${mushaf.id === currentMushaf ? "bg-blue-800 border border-blue-600" : "bg-green-500 hover:bg-green-600"} 
-              ${!mushaf.available && "opacity-20 cursor-not-allowed"}`}
+            className={`w-full sm:w-[48%] px-2 py-2 rounded-xl text-white text-lg font-semibold transition 
+          ${mushaf.id === currentMushaf ? "bg-blue-800 border border-blue-600" : "bg-green-500 hover:bg-green-600"} 
+          ${!mushaf.available && "opacity-40 cursor-not-allowed"}`}
           >
             {mushaf.name} {!mushaf.available && " (قريبًا)"}
           </button>
@@ -39,4 +40,6 @@ export default function MushafSwitcher() {
       </div>
     </div>
   );
+
+
 }

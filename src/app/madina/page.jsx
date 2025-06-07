@@ -21,8 +21,8 @@ export const dynamic = 'force-static' // ⬅️ ضروري لتوليد الصف
 export default function HafsPage() {
   // المتغيرات والحالات
   const totalPages = 604;
-  const imageWidth = 1446;
-  const imageHeight = 2297;
+  const imageWidth = 2979; // عرض الصورةالاصلية الي اتاخد عليها الاحداثيات
+  const imageHeight = 4527; // ارتفاع الصورة الاصلية الي اتاخد عليها الاحداثيات
   const scrollContainerRef = useRef(null);
 
   const [currentPage, setCurrentPage] = useState(1);

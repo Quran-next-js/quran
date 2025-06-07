@@ -115,7 +115,7 @@ export default function ReminderTime() {
   return (
     <div className="p-1 text-right mb-3 mt-2 shadow-md border border-gray-600 rounded-lg">
       <div className="d-flex justify-between align-items-center">
-      <h2>  التذكير اليومي </h2>
+      <h4 className="text-lg">  التذكير اليومي </h4>
         <button
           type="button"
           className="btn btn-outline-primary"

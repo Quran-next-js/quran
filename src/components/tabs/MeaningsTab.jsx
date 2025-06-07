@@ -47,7 +47,7 @@ export default function MeaningsTab({ selectedVerse }) {
             {meanings.map((item, index) => (
               <tr key={index}>
                 <td>{item.words}</td>
-                <td><span>{item.meaning}</span> <small>{item.surce}</small></td>
+                <td><span>{item.meaning}</span> <small className="text-sm badge bg-sky-200 text-center d-block smallname">{item.surce}</small></td>
               </tr>
             ))}
           </tbody>
